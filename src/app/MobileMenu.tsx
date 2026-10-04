@@ -11,7 +11,9 @@ export default function MobileMenu({ children }: { children: ReactNode }) {
         details.current.querySelector("summary")?.focus();
       }
     }}>
-      <summary>Menu</summary>
+      <summary aria-label="Navigation menu">
+        <span className="mobile-menu-icon" aria-hidden="true"><span /><span /><span /></span>
+      </summary>
       <nav aria-label="Mobile navigation" onClick={(event) => {
         if ((event.target as HTMLElement).closest("a") && details.current) details.current.open = false;
       }}>{children}</nav>

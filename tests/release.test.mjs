@@ -22,7 +22,12 @@ for (const route of routes) {
     assert.ok(html.includes(`${origin}/social-card.jpg`));
     assert.doesNotMatch(html, /localhost:3000|mcp\.figma\.com|DUBIC|northwind|dashboard-pro/i);
     assert.equal((html.match(/aria-label="Primary navigation"/g) ?? []).length, 1);
-    assert.match(html, /mailto:hello@icetechdevelopment.com/);
+    assert.match(html, /mailto:info@icetechdevelopment.com/);
+    assert.doesNotMatch(html, /hello@icetechdevelopment\.com/);
+    for (const [, email] of html.matchAll(/href="mailto:([^"]+)"/g)) {
+      assert.equal(email, "info@icetechdevelopment.com");
+    }
+    assert.match(html, /<summary aria-label="Navigation menu"><span class="mobile-menu-icon" aria-hidden="true">/);
     for (const image of html.matchAll(/<img\b[^>]*>/g)) {
       assert.match(image[0], /\balt="/);
       assert.match(image[0], /\bsrcSet="/);

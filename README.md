@@ -50,7 +50,7 @@ For rollback, restore the backed-up release files **and its `.htaccess` together
 - Project facts, technologies and permission to publish screenshots/logos were confirmed by the owner on 4 October 2026. Smoki is marked as an archived campaign with no live-site link. Unverified campaign dates were removed.
 - No analytics or advertising scripts are installed. Fonts and images are served locally. LinkedIn/GitHub placeholders have been removed until actual profile URLs are supplied.
 - **Still requires hosting access:** upload, SSL and redirect checks, live security-header verification, final mobile performance/accessibility checks on the served domain, and sitemap submission in the owner's Search Console account.
-- **Still requires a mailbox test:** verify `hello@icetechdevelopment.com` exists; send an email from an external account and reply to it. All contact buttons use `mailto:` and require the visitor's email app. Confirm SPF/DKIM/DMARC with the mail administrator. No test email has been sent by the build process.
+- **Still requires a mailbox test:** verify `info@icetechdevelopment.com` exists; send an email from an external account and reply to it. All contact buttons use `mailto:` and require the visitor's email app. Confirm SPF/DKIM/DMARC with the mail administrator. No test email has been sent by the build process.
 
 ## Dependency security
 
