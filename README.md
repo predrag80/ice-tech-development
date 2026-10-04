@@ -44,13 +44,21 @@ Expect HTTP redirects to `https://icetechdevelopment.com/`, `X-Content-Type-Opti
 
 For rollback, restore the backed-up release files **and its `.htaccess` together**. Never restore only HTML with a different release's CSP. If the existing document root hosts other content, deploy only within the agreed website scope.
 
+## Production deployment — 4 October 2026
+
+- Live at `https://icetechdevelopment.com/` on Unlimited, from application commit `6e8934f`.
+- Uploaded `ice-tech-production-2026-10-04T15-00-52-816Z.zip` (SHA-256 `341a87e1d273bc07caf957bb2396dd9b9193a1aaca686a6af24ed6416d3cdddc`) to the domain's dedicated `icetechdevelopment.com` document root.
+- Preserved the previous content in `ice-tech-predeploy-2026-10-04-6e8934f.zip` in the cPanel account home, outside the public directory. The release ZIP is also retained there. SSL validation files, mail settings, DNS and other domains were not changed.
+- Verified all 163 public release files byte-for-byte over HTTPS, seven page routes, per-page metadata and CSP hashes, HTTP/non-www redirects, a real 404, robots/sitemap, and protection of source/dotfiles. Desktop and 390px mobile browser checks passed, including the hamburger menu, project navigation and all three galleries; no browser errors were reported in these checks.
+- Confirmed `info@icetechdevelopment.com` exists without account restrictions. MX, SPF and DMARC records are present. Actual inbound/outbound email delivery still requires a mailbox test; existence and DNS records alone do not prove delivery.
+
 ## Launch checklist
 
 - Domain and per-page canonical, Open Graph and Twitter metadata are configured in `src/app/site.ts`. Sitemap and robots are generated at build time.
 - Project facts, technologies and permission to publish screenshots/logos were confirmed by the owner on 4 October 2026. Smoki is marked as an archived campaign with no live-site link. Unverified campaign dates were removed.
 - No analytics or advertising scripts are installed. Fonts and images are served locally. LinkedIn/GitHub placeholders have been removed until actual profile URLs are supplied.
-- **Still requires hosting access:** upload, SSL and redirect checks, live security-header verification, final mobile performance/accessibility checks on the served domain, and sitemap submission in the owner's Search Console account.
-- **Still requires a mailbox test:** verify `info@icetechdevelopment.com` exists; send an email from an external account and reply to it. All contact buttons use `mailto:` and require the visitor's email app. Confirm SPF/DKIM/DMARC with the mail administrator. No test email has been sent by the build process.
+- Deployment, TLS, redirects, live headers and functional desktop/mobile checks are complete. Search Console sitemap submission and real-user performance monitoring remain owner follow-ups; no live Lighthouse score or full accessibility certification is claimed.
+- **Still requires a mailbox test:** send an email to `info@icetechdevelopment.com` from an external account and reply to it. All contact buttons use `mailto:` and require the visitor's email app. Confirm DKIM and mail authentication with the mail administrator. No test email has been sent by the build process.
 
 ## Dependency security
 
