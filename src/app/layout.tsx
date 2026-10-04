@@ -1,11 +1,26 @@
 import type { Metadata } from "next";
+import { Caveat, Sora } from "next/font/google";
+import { pageMetadata, siteUrl } from "./site";
 import "./globals.css";
+import "./responsive.css";
+
+const sora = Sora({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-sora",
+});
+
+const caveat = Caveat({
+  subsets: ["latin"],
+  weight: ["400", "600"],
+  display: "swap",
+  variable: "--font-caveat",
+});
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
-  title: "ICE TECH DEVELOPMENT — Web & Software Development",
-  description:
-    "We design and build high-performance websites, custom software, and digital products for ambitious businesses.",
+  metadataBase: new URL(siteUrl),
+  ...pageMetadata("/", "ICE TECH DEVELOPMENT — Web & Software Development", "We design and build high-performance websites, custom software, and digital products for ambitious businesses."),
+  icons: { icon: "/icon.svg", apple: "/apple-touch-icon.png" },
   keywords: [
     "web development",
     "software development",
@@ -13,25 +28,6 @@ export const metadata: Metadata = {
     "digital products",
     "ICE TECH DEVELOPMENT",
   ],
-  openGraph: {
-    title: "ICE TECH DEVELOPMENT",
-    description: "Digital products. Thoughtfully engineered.",
-    type: "website",
-    images: [
-      {
-        url: "/og.png",
-        width: 1792,
-        height: 938,
-        alt: "ICE TECH DEVELOPMENT — Digital products. Thoughtfully engineered.",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "ICE TECH DEVELOPMENT",
-    description: "Digital products. Thoughtfully engineered.",
-    images: ["/og.png"],
-  },
 };
 
 export default function RootLayout({
@@ -40,8 +36,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body>{children}</body>
+    <html lang="en" className={`${sora.variable} ${caveat.variable}`}>
+      <body>
+        <a className="skip-link" href="#main-content">Skip to content</a>
+        {children}
+      </body>
     </html>
   );
 }

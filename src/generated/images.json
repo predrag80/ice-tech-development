@@ -1,0 +1,110 @@
+{
+  "/hero-blue-clouds-v2.webp": {
+    "240": "/media/hero-blue-clouds-v2-9964d5d86165-240.webp",
+    "320": "/media/hero-blue-clouds-v2-9964d5d86165-320.webp",
+    "480": "/media/hero-blue-clouds-v2-9964d5d86165-480.webp",
+    "768": "/media/hero-blue-clouds-v2-9964d5d86165-768.webp",
+    "1200": "/media/hero-blue-clouds-v2-9964d5d86165-1200.webp",
+    "1600": "/media/hero-blue-clouds-v2-9964d5d86165-1600.webp",
+    "1860": "/media/hero-blue-clouds-v2-9964d5d86165-1860.webp"
+  },
+  "/hero-mountain-editorial-v2.png": {
+    "240": "/media/hero-mountain-editorial-v2-4b6fe9e8222a-240.webp",
+    "320": "/media/hero-mountain-editorial-v2-4b6fe9e8222a-320.webp",
+    "480": "/media/hero-mountain-editorial-v2-4b6fe9e8222a-480.webp",
+    "768": "/media/hero-mountain-editorial-v2-4b6fe9e8222a-768.webp",
+    "1200": "/media/hero-mountain-editorial-v2-4b6fe9e8222a-1200.webp",
+    "1600": "/media/hero-mountain-editorial-v2-4b6fe9e8222a-1600.webp",
+    "1672": "/media/hero-mountain-editorial-v2-4b6fe9e8222a-1672.webp"
+  },
+  "/cta-architectural-blueprint-v3.png": {
+    "240": "/media/cta-architectural-blueprint-v3-8ec4e92004a2-240.webp",
+    "320": "/media/cta-architectural-blueprint-v3-8ec4e92004a2-320.webp",
+    "480": "/media/cta-architectural-blueprint-v3-8ec4e92004a2-480.webp",
+    "768": "/media/cta-architectural-blueprint-v3-8ec4e92004a2-768.webp",
+    "1200": "/media/cta-architectural-blueprint-v3-8ec4e92004a2-1200.webp",
+    "1600": "/media/cta-architectural-blueprint-v3-8ec4e92004a2-1600.webp",
+    "1672": "/media/cta-architectural-blueprint-v3-8ec4e92004a2-1672.webp"
+  },
+  "/project-smoki-cover.jpg": {
+    "240": "/media/project-smoki-cover-e8c9a40d7906-240.webp",
+    "320": "/media/project-smoki-cover-e8c9a40d7906-320.webp",
+    "480": "/media/project-smoki-cover-e8c9a40d7906-480.webp",
+    "768": "/media/project-smoki-cover-e8c9a40d7906-768.webp",
+    "1200": "/media/project-smoki-cover-e8c9a40d7906-1200.webp",
+    "1600": "/media/project-smoki-cover-e8c9a40d7906-1600.webp",
+    "1673": "/media/project-smoki-cover-e8c9a40d7906-1673.webp"
+  },
+  "/project-hse-hero.webp": {
+    "240": "/media/project-hse-hero-45304970861a-240.webp",
+    "320": "/media/project-hse-hero-45304970861a-320.webp",
+    "480": "/media/project-hse-hero-45304970861a-480.webp",
+    "768": "/media/project-hse-hero-45304970861a-768.webp",
+    "1200": "/media/project-hse-hero-45304970861a-1200.webp",
+    "1600": "/media/project-hse-hero-45304970861a-1600.webp",
+    "1920": "/media/project-hse-hero-45304970861a-1920.webp"
+  },
+  "/project-99bitcoins-cover.png": {
+    "240": "/media/project-99bitcoins-cover-82afe90bedf0-240.webp",
+    "320": "/media/project-99bitcoins-cover-82afe90bedf0-320.webp",
+    "480": "/media/project-99bitcoins-cover-82afe90bedf0-480.webp",
+    "768": "/media/project-99bitcoins-cover-82afe90bedf0-768.webp",
+    "1200": "/media/project-99bitcoins-cover-82afe90bedf0-1200.webp"
+  },
+  "/project-smoki-homepage-screen.webp": {
+    "228": "/media/project-smoki-homepage-screen-971b46ffd965-228.webp"
+  },
+  "/project-smoki-avatar-screen.webp": {
+    "228": "/media/project-smoki-avatar-screen-0cb821c4e82a-228.webp"
+  },
+  "/project-smoki-cheering-screen.webp": {
+    "240": "/media/project-smoki-cheering-screen-2db092547efa-240.webp",
+    "249": "/media/project-smoki-cheering-screen-2db092547efa-249.webp"
+  },
+  "/project-hse-training.webp": {
+    "240": "/media/project-hse-training-45304970861a-240.webp",
+    "320": "/media/project-hse-training-45304970861a-320.webp",
+    "480": "/media/project-hse-training-45304970861a-480.webp",
+    "768": "/media/project-hse-training-45304970861a-768.webp",
+    "1200": "/media/project-hse-training-45304970861a-1200.webp",
+    "1600": "/media/project-hse-training-45304970861a-1600.webp",
+    "1920": "/media/project-hse-training-45304970861a-1920.webp"
+  },
+  "/project-hse-coaching.webp": {
+    "240": "/media/project-hse-coaching-129832153e4a-240.webp",
+    "320": "/media/project-hse-coaching-129832153e4a-320.webp",
+    "480": "/media/project-hse-coaching-129832153e4a-480.webp",
+    "768": "/media/project-hse-coaching-129832153e4a-768.webp",
+    "1200": "/media/project-hse-coaching-129832153e4a-1200.webp",
+    "1600": "/media/project-hse-coaching-129832153e4a-1600.webp",
+    "1920": "/media/project-hse-coaching-129832153e4a-1920.webp"
+  },
+  "/project-hse-team.webp": {
+    "240": "/media/project-hse-team-e33b9baee610-240.webp",
+    "320": "/media/project-hse-team-e33b9baee610-320.webp",
+    "480": "/media/project-hse-team-e33b9baee610-480.webp",
+    "768": "/media/project-hse-team-e33b9baee610-768.webp",
+    "1166": "/media/project-hse-team-e33b9baee610-1166.webp"
+  },
+  "/project-99bitcoins-bitcoin.jpg": {
+    "240": "/media/project-99bitcoins-bitcoin-6595eda47568-240.webp",
+    "320": "/media/project-99bitcoins-bitcoin-6595eda47568-320.webp",
+    "480": "/media/project-99bitcoins-bitcoin-6595eda47568-480.webp",
+    "768": "/media/project-99bitcoins-bitcoin-6595eda47568-768.webp",
+    "1200": "/media/project-99bitcoins-bitcoin-6595eda47568-1200.webp"
+  },
+  "/project-99bitcoins-dex.jpg": {
+    "240": "/media/project-99bitcoins-dex-a0125fa1bd91-240.webp",
+    "320": "/media/project-99bitcoins-dex-a0125fa1bd91-320.webp",
+    "480": "/media/project-99bitcoins-dex-a0125fa1bd91-480.webp",
+    "768": "/media/project-99bitcoins-dex-a0125fa1bd91-768.webp",
+    "1200": "/media/project-99bitcoins-dex-a0125fa1bd91-1200.webp"
+  },
+  "/project-99bitcoins-indices.jpg": {
+    "240": "/media/project-99bitcoins-indices-bee0b9e112aa-240.webp",
+    "320": "/media/project-99bitcoins-indices-bee0b9e112aa-320.webp",
+    "480": "/media/project-99bitcoins-indices-bee0b9e112aa-480.webp",
+    "768": "/media/project-99bitcoins-indices-bee0b9e112aa-768.webp",
+    "1200": "/media/project-99bitcoins-indices-bee0b9e112aa-1200.webp"
+  }
+}

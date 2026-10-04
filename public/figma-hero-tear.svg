@@ -1,0 +1,11 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="840" height="310" viewBox="0 0 840 310" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Hero / Torn paper edge" clip-path="url(#clip0_0_4)">
+<path id="Vector" d="M0 76C30 70 56 78 88 68C121 57 149 81 184 64C220 46 250 76 286 59C324 42 354 76 391 56C430 35 462 74 503 54C542 35 578 70 618 50C657 32 694 68 735 49C773 33 806 66 840 57V310H0V76Z" fill="#F8FBFE" fill-opacity="0.985"/>
+<path id="Vector_2" d="M0 74C30 68 56 76 88 66C121 55 149 79 184 62C220 44 250 74 286 57C324 40 354 74 391 54C430 33 462 72 503 52C542 33 578 68 618 48C657 30 694 66 735 47C773 31 806 64 840 55" stroke="#D7E6F3" stroke-opacity="0.55" stroke-width="3"/>
+</g>
+<defs>
+<clipPath id="clip0_0_4">
+<rect width="840" height="310" fill="white"/>
+</clipPath>
+</defs>
+</svg>

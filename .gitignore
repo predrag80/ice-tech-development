@@ -7,6 +7,10 @@
 
 # production
 /build
+/releases/
+/public/media/
+/public/social-card.jpg
+/public/apple-touch-icon.png
 
 # misc
 .DS_Store

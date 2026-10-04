@@ -1,0 +1,43 @@
+# Generated release configuration for an Apache-compatible Unlimited cPanel host.
+# Deploy to the document root of icetechdevelopment.com, after SSL is active.
+Options -Indexes -MultiViews
+DirectoryIndex index.html
+ErrorDocument 404 /404.html
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  # Preserve AutoSSL challenge validation.
+  RewriteRule ^\.well-known/ - [L]
+  RewriteCond %{HTTP_HOST} ^www\.icetechdevelopment\.com$ [NC,OR]
+  RewriteCond %{HTTPS} !=on
+  RewriteRule ^ https://icetechdevelopment.com%{REQUEST_URI} [R=301,L,NE]
+</IfModule>
+
+<FilesMatch "^\.">
+  Require all denied
+</FilesMatch>
+
+<IfModule mod_mime.c>
+  AddType image/webp .webp
+  AddType image/svg+xml .svg
+  AddType font/woff2 .woff2
+  AddType text/plain .txt
+</IfModule>
+
+<IfModule mod_headers.c>
+  # Revalidate HTML and RSC navigation payloads after each release.
+  <FilesMatch "\.(html|txt|xml|json)$">
+    Header set Cache-Control "public, max-age=0, must-revalidate"
+  </FilesMatch>
+  <FilesMatch "\.(css|js|woff2|webp|svg|png|jpe?g)$">
+    Header set Cache-Control "public, max-age=86400"
+  </FilesMatch>
+  # Both Next chunks and /media/ variants contain content hashes.
+  <FilesMatch "([-_.][a-f0-9]{12,}[-_.]|^[a-zA-Z0-9_-]{16,}\.(js|css)$)">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+</IfModule>
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css application/javascript application/json application/xml image/svg+xml
+</IfModule>

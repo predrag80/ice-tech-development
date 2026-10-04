@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 160" preserveAspectRatio="none">
+  <defs>
+    <linearGradient id="topVeil" x1="960" y1="0" x2="960" y2="160" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f9fbfd" stop-opacity=".98"/>
+      <stop offset=".45" stop-color="#f9fbfd" stop-opacity=".80"/>
+      <stop offset=".76" stop-color="#f9fbfd" stop-opacity=".42"/>
+      <stop offset="1" stop-color="#f9fbfd" stop-opacity=".18"/>
+    </linearGradient>
+    <filter id="brush" x="-40" y="-35" width="2000" height="235" filterUnits="userSpaceOnUse">
+      <feTurbulence type="fractalNoise" baseFrequency=".012 .095" numOctaves="4" seed="27" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="20" xChannelSelector="R" yChannelSelector="B"/>
+    </filter>
+    <filter id="feather" x="-45" y="-45" width="2010" height="250" filterUnits="userSpaceOnUse">
+      <feTurbulence type="fractalNoise" baseFrequency=".009 .075" numOctaves="3" seed="41" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="26" xChannelSelector="G" yChannelSelector="R" result="edge"/>
+      <feGaussianBlur in="edge" stdDeviation="8 3"/>
+    </filter>
+  </defs>
+
+  <rect width="1920" height="160" fill="url(#topVeil)"/>
+  <path d="M0 0H1920V140C1815 147 1750 137 1674 143C1586 150 1530 126 1460 132C1375 139 1328 103 1254 112C1170 121 1152 70 1075 82C995 94 954 72 890 94C817 119 782 105 718 130C658 153 601 153 525 160H0Z" fill="#f9fbfd" opacity=".58" filter="url(#feather)"/>
+  <path d="M0 0H1920V139C1823 146 1752 134 1678 143C1597 153 1538 124 1464 133C1387 143 1324 101 1251 113C1179 125 1142 67 1068 81C1004 93 955 70 886 96C821 121 775 105 716 132C650 161 597 151 516 160H0Z" fill="#f9fbfd" opacity=".88" filter="url(#brush)"/>
+</svg>

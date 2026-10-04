@@ -3,10 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint ."
+    "dev": "npm run images && next dev",
+    "images": "node scripts/optimize-images.mjs",
+    "build": "npm run images && next build && node scripts/finalize-export.mjs",
+    "start": "node scripts/preview.mjs",
+    "lint": "eslint .",
+    "test": "node --test tests/*.test.mjs",
+    "check": "npm run lint && npm run build && npm test && npm audit --omit=dev",
+    "release": "npm run check && node scripts/package-release.mjs"
   },
   "dependencies": {
     "next": "16.3.6",
@@ -19,6 +23,7 @@
     "@types/react-dom": "^19.2.0",
     "eslint": "^9.0.0",
     "eslint-config-next": "16.3.6",
+    "sharp": "0.35.4",
     "typescript": "^5.9.0"
   }
 }

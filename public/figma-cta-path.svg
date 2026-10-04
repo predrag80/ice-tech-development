@@ -1,0 +1,12 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="360" height="604" viewBox="0 0 360 604" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="CTA / Engineering path" clip-path="url(#clip0_0_4)">
+<path id="Vector" d="M250 0V392C250 449 226 478 174 489C114 502 92 527 92 604" stroke="#2C83F5" stroke-width="4" stroke-linecap="round"/>
+<path id="Vector_2" d="M250 11C253.866 11 257 7.86599 257 4C257 0.134007 253.866 -3 250 -3C246.134 -3 243 0.134007 243 4C243 7.86599 246.134 11 250 11Z" fill="#2C83F5"/>
+<path id="Vector_3" d="M92 605C95.866 605 99 601.866 99 598C99 594.134 95.866 591 92 591C88.134 591 85 594.134 85 598C85 601.866 88.134 605 92 605Z" fill="#2C83F5"/>
+</g>
+<defs>
+<clipPath id="clip0_0_4">
+<rect width="360" height="604" fill="white"/>
+</clipPath>
+</defs>
+</svg>
