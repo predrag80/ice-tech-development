@@ -1,0 +1,233 @@
+.about,
+.faq {
+  padding-block: clamp(48px, 5vw, 80px);
+  display: grid;
+  grid-template-columns: minmax(0, .9fr) minmax(0, 1.3fr);
+  gap: clamp(36px, 6vw, 96px);
+  scroll-margin-top: 24px;
+}
+
+.about {
+  border-block: 1px solid var(--line);
+}
+
+.eyebrow {
+  margin: 0 0 20px;
+  color: #5d789b;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+
+.about h2,
+.faq h2 {
+  margin: 0;
+  font-size: clamp(32px, 2.85vw, 48px);
+  font-weight: 650;
+  line-height: 1.08;
+  letter-spacing: -.055em;
+}
+
+.about > div > a {
+  display: inline-flex;
+  margin-top: 30px;
+}
+
+.leadership {
+  margin-top: 32px;
+  padding-left: 16px;
+  border-left: 2px solid #85b6ef;
+}
+
+.leadership > p {
+  margin: 0 0 10px;
+  color: #5d789b;
+  font-size: 10px;
+  font-weight: 650;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.leadership h3 {
+  margin: 0 0 6px;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.leadership > span {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.aboutCopy > p {
+  max-width: 65ch;
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: clamp(15px, 1.15vw, 18px);
+  line-height: 1.7;
+}
+
+.aboutCopy > p + p {
+  margin-top: 18px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.facts {
+  margin: 28px 0 0;
+  padding-top: 22px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.3fr;
+  gap: 20px;
+  border-top: 1px solid var(--line);
+}
+
+.facts dt {
+  margin-bottom: 8px;
+  color: #5d789b;
+  font-size: 10px;
+  font-weight: 650;
+  text-transform: uppercase;
+  letter-spacing: .09em;
+}
+
+.facts dd {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.nextLabel {
+  margin: 30px 0 18px;
+  color: var(--ink-soft);
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.nextSteps {
+  display: grid;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nextSteps li {
+  display: grid;
+  grid-template-columns: 24px minmax(0, 1fr);
+  gap: 14px;
+}
+
+.nextSteps li > span {
+  padding-top: 3px;
+  color: #266bc1;
+  font-size: 11px;
+  font-weight: 650;
+}
+
+.nextSteps strong {
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.nextSteps p {
+  max-width: 38ch;
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+.questions details {
+  border-top: 1px solid var(--line);
+}
+
+.questions details:last-of-type {
+  border-bottom: 1px solid var(--line);
+}
+
+.questions summary {
+  min-height: 68px;
+  padding: 22px 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  cursor: pointer;
+  list-style: none;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.55;
+}
+
+.questions summary::-webkit-details-marker {
+  display: none;
+}
+
+.questions summary:hover,
+.questions details[open] summary {
+  color: #266bc1;
+}
+
+.toggle {
+  position: relative;
+  flex: 0 0 16px;
+  height: 16px;
+  color: #266bc1;
+}
+
+.toggle::before,
+.toggle::after {
+  content: "";
+  position: absolute;
+  top: 7px;
+  left: 1px;
+  width: 14px;
+  height: 2px;
+  background: currentColor;
+}
+
+.toggle::after { transform: rotate(90deg); }
+.questions details[open] .toggle::after { display: none; }
+
+.questions details > p {
+  max-width: 64ch;
+  margin: 0;
+  padding: 0 32px 24px 4px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.75;
+}
+
+.faqContact {
+  margin: 22px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.faqContact a {
+  display: inline-block;
+  padding-block: 10px;
+  color: var(--ink-soft);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+@media (max-width: 900px) {
+  .about, .faq { grid-template-columns: 1fr; gap: 32px; }
+  .nextSteps { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+  .nextSteps li { grid-template-columns: 1fr; gap: 8px; }
+}
+
+@media (max-width: 620px) {
+  .facts { grid-template-columns: 1fr; gap: 18px; }
+  .facts > div { display: grid; grid-template-columns: 100px minmax(0, 1fr); gap: 16px; }
+  .facts dt { margin: 0; line-height: 1.8; }
+  .nextSteps { grid-template-columns: 1fr; gap: 18px; }
+  .nextSteps li { grid-template-columns: 24px minmax(0, 1fr); gap: 14px; }
+  .questions summary { padding-block: 20px; gap: 16px; }
+}

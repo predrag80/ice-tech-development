@@ -19,7 +19,7 @@ type ProjectCaseStudyData = {
   overviewTitle: [string, string];
   overview: string;
   problem: string;
-  approach: string;
+  contribution: string;
   outcome: string;
   deliverables: string[];
   technologies: [string, string][];
@@ -41,9 +41,9 @@ export const projectCaseStudies = {
     projectType: "Archived campaign",
     overviewTitle: ["Made for", "match day."],
     overview: "Smoki Navijaj connects football predictions, personalized fan avatars, leagues and rewards in one campaign platform.",
-    problem: "A large regional campaign needed to keep thousands of fans engaged throughout a fast-moving tournament.",
-    approach: "We combined onboarding, match data, predictions, boosters, private leagues and AI-assisted avatars in a mobile-first flow.",
-    outcome: "A scalable campaign product with real-time scoring, multilingual delivery and a clear path from participation to reward.",
+    problem: "The campaign needed one mobile-first experience for fan participation, personalized avatars and competition throughout a football tournament.",
+    contribution: "We developed the fan application and its backend features: onboarding, AI-assisted avatar creation, match predictions, leagues and scoring, with multilingual delivery.",
+    outcome: "Fans could create an avatar, make predictions and follow their progress in the competition. The campaign is now archived and the application is no longer available.",
     deliverables: ["Product architecture", "Responsive PWA", "Competition engine", "AI avatar workflow"],
     technologies: [
       ["Next.js", "Fast multilingual fan experience"],
@@ -71,8 +71,8 @@ export const projectCaseStudies = {
     overviewTitle: ["Trust built", "into every page."],
     overview: "HSE Training brings courses, professional expertise, resources and online enquiries into one structured bilingual experience.",
     problem: "A broad training offer and specialist credentials needed a clearer structure for regional and international audiences.",
-    approach: "We shaped a content-led website with focused course discovery, multilingual navigation and a connected checkout journey.",
-    outcome: "A faster, more credible platform that supports discovery, course enquiries, payments and ongoing content publishing.",
+    contribution: "We designed and developed the bilingual website, connected the Astro front end to WordPress content and integrated WooCommerce course checkout through APIs.",
+    outcome: "Visitors can explore courses and access the checkout journey in a structured bilingual website, while the content team manages publishing through the CMS.",
     deliverables: ["Information architecture", "Responsive website", "Bilingual experience", "CMS and commerce integration"],
     technologies: [
       ["Astro", "Fast content-first front end"],
@@ -100,8 +100,8 @@ export const projectCaseStudies = {
     overviewTitle: ["Crypto knowledge", "made accessible."],
     overview: "99Bitcoins combines editorial content with custom crypto functionality, including a data aggregator that collects and normalizes information from external market sources.",
     problem: "The platform needed reliable crypto data inside WordPress, while editors also required specialized tools that standard plugins could not provide.",
-    approach: "We developed a custom aggregation plugin for external crypto data and additional purpose-built plugins for crypto content, reusable data displays and editorial workflows.",
-    outcome: "A more capable publishing platform with automated data collection, consistent crypto information and tools tailored to the editorial team.",
+    contribution: "Our work focused on custom WordPress plugins, including a crypto data aggregator that collects, normalizes and synchronizes information from external APIs, plus crypto-specific displays and editorial tools.",
+    outcome: "The platform can bring external crypto data into its publishing workflows and present it through reusable frontend components, alongside its editorial content.",
     deliverables: ["Crypto data aggregator", "Custom WordPress plugins", "External API integrations", "Editorial tools"],
     technologies: [
       ["WordPress", "Flexible editorial publishing"],
@@ -235,11 +235,11 @@ export default function ProjectCaseStudy({ project }: { project: ProjectCaseStud
         <div className={styles.overviewGrid}>
           <div className={styles.overviewTitle}><h2>{project.overviewTitle[0]}<br />{project.overviewTitle[1]}</h2><p>{project.overview}</p></div>
           <div className={styles.overviewCopy}>
-            <article><span>01</span><div><h3>Problem</h3><p>{project.problem}</p></div></article>
-            <article><span>02</span><div><h3>Approach</h3><p>{project.approach}</p></div></article>
-            <article><span>03</span><div><h3>Outcome</h3><p>{project.outcome}</p></div></article>
+            <article><span>01</span><div><h3>The challenge</h3><p>{project.problem}</p></div></article>
+            <article><span>02</span><div><h3>Our contribution</h3><p>{project.contribution}</p></div></article>
+            <article><span>03</span><div><h3>The result</h3><p>{project.outcome}</p></div></article>
           </div>
-          <aside className={styles.scope}><p>What we delivered</p><ul>{project.deliverables.map((item) => <li key={item}>{item}</li>)}</ul></aside>
+          <aside className={styles.scope}><p>Our scope</p><ul>{project.deliverables.map((item) => <li key={item}>{item}</li>)}</ul></aside>
         </div>
       </section>
 

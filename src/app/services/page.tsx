@@ -3,6 +3,7 @@ import { pageMetadata } from "../site";
 import Link from "../StaticLink";
 import ScrollToTop from "../ScrollToTop";
 import styles from "./services.module.css";
+import { processSteps } from "../processSteps";
 
 export const metadata = pageMetadata("/services", "Services | ICE TECH DEVELOPMENT", "Web development, custom software and digital product services from ICE TECH DEVELOPMENT.");
 
@@ -25,13 +26,6 @@ const services = [
     description: "Focused product strategy, design and engineering—from an early idea to a reliable production release.",
     deliverables: ["Product strategy", "UX and interface design", "Rapid prototyping", "Product delivery"],
   },
-];
-
-const process = [
-  ["01", "Understand", "Goals, users and context"],
-  ["02", "Design", "Structure and interaction"],
-  ["03", "Build", "Reliable production code"],
-  ["04", "Evolve", "Measure and improve"],
 ];
 
 function MountainMark() {
@@ -92,7 +86,7 @@ export default function ServicesPage() {
       <section className={styles.processSection}>
         <div className={`${styles.processInner} page-shell`}>
           <div className={styles.processHeading}><div><p>/ How we work</p><h2>From context<br />to launch.</h2></div><p>A focused process keeps business, design and engineering aligned from the first decision.</p></div>
-          <ol>{process.map(([number, title, text]) => <li key={number}><span>{number}</span><div><h3>{title}</h3><p>{text}</p></div></li>)}</ol>
+          <ol aria-label="Our five-phase process">{processSteps.map(({ number, title, summary }) => <li key={number}><span>{number}</span><div><h3>{title}</h3><p>{summary}</p></div></li>)}</ol>
         </div>
       </section>
 

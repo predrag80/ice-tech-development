@@ -61,6 +61,51 @@ test("SEO discovery contains only the seven real routes", async () => {
   assert.match(await readFile("out/robots.txt", "utf8"), /Sitemap: https:\/\/icetechdevelopment.com\/sitemap.xml/);
 });
 
+test("About identifies the business and the FAQ explains first contact", async () => {
+  const html = await page("/");
+  const about = html.match(/<section\b[^>]*id="about"[^>]*>([\s\S]*?)<\/section>/)?.[1];
+  assert.ok(about, "About navigation must lead to the business introduction");
+  assert.match(about, /Who we are/);
+  assert.match(about, /Belgrade, Serbia/);
+  assert.match(about, /founder-led development team/);
+  assert.match(about, /Predrag Vučković/);
+  assert.match(about, /Founder &amp; Lead Developer/);
+  assert.match(about, /Project Manager/);
+  assert.match(html, /id="approach"/);
+  const faq = html.match(/<section\b[^>]*id="project-faq"[^>]*>([\s\S]*?)<\/section>/)?.[1];
+  assert.ok(faq);
+  assert.match(faq, /What happens after your email/);
+  const answers = [...faq.matchAll(/<details>([\s\S]*?)<\/details>/g)];
+  assert.equal(answers.length, 7);
+  for (const [, answer] of answers) {
+    assert.match(answer, /^<summary>/, "FAQ must use native keyboard-accessible disclosure controls");
+    assert.match(answer, /<\/summary><p>.+<\/p>/);
+  }
+  assert.match(faq, /mailto:info@icetechdevelopment.com/);
+  assert.match(faq, /hosting and support after launch/);
+  assert.match(faq, /source code and access handed over/);
+});
+
+test("process phases stay consistent across all three presentations", async () => {
+  const phases = ["Understand", "Define", "Design", "Build", "Launch & evolve"];
+  for (const route of ["/", "/services/", "/process/"]) {
+    const html = await page(route);
+    const list = html.match(/<ol\b[^>]*aria-label="Our five-phase process"[^>]*>([\s\S]*?)<\/ol>/)?.[1];
+    assert.ok(list, route);
+    const titles = [...list.matchAll(/<(?:strong|h3|small)>(.*?)<\/(?:strong|h3|small)>/g)].map((match) => decode(match[1]));
+    assert.deepEqual(titles, phases, route);
+  }
+});
+
+test("each case study distinguishes contribution, scope and result", async () => {
+  for (const route of routes.filter((route) => route.startsWith("/projects/") && route !== "/projects/")) {
+    const html = await page(route);
+    for (const title of ["The challenge", "Our contribution", "The result"]) assert.ok(html.includes(`<h3>${title}</h3>`), `${route}: ${title}`);
+    assert.match(html, /<p>Our scope<\/p>/);
+  }
+  assert.match(await page("/projects/99bitcoins/"), /Our work focused on custom WordPress plugins/);
+});
+
 test("all exported inline scripts are CSP-hashed; no third-party capture script", async () => {
   const headers = JSON.parse(await readFile("out/.headers.json", "utf8"));
   assert.doesNotMatch(headers["Content-Security-Policy"].split(";").find((p) => p.includes("script-src")), /unsafe-inline|unsafe-eval/);
