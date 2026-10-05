@@ -58,14 +58,14 @@ export default function ProjectsPage() {
         <div className={`${styles.ctaInner} page-shell`}>
           <p>/ Start a conversation</p>
           <h2>Have a project<br />in mind?</h2>
-          <div><span>Tell us about your goals and timeline by email.</span><a className="button" href="mailto:hello@icetechdevelopment.com">Send us an email <b>→</b></a></div>
+          <div><span>Tell us about your goals and timeline by email.</span><a className="button" href="mailto:info@icetechdevelopment.com">Send us an email <b>→</b></a></div>
         </div>
       </section>
 
       <footer className={`${styles.footer} page-shell`}>
         <div><Link href="/"><Brand /></Link><small>© 2026 ICE TECH DEVELOPMENT</small></div>
         <nav><Link href="/services">Services</Link><Link href="/projects">Work</Link><Link href="/#about">About</Link><Link href="/process">Process</Link><Link href="/#contact">Contact</Link></nav>
-        <div><span>Belgrade / Serbia<br />Working worldwide</span><a href="mailto:hello@icetechdevelopment.com">hello@icetechdevelopment.com</a></div>
+        <div><span>Belgrade / Serbia<br />Working worldwide</span><a href="mailto:info@icetechdevelopment.com">info@icetechdevelopment.com</a></div>
       </footer>
       <ScrollToTop />
     </main>
