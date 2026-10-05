@@ -20,7 +20,7 @@ npm run check
 npm start
 ```
 
-`check` runs ESLint, a production export, 13 release tests and the production dependency audit. `npm start` previews the static export at `http://127.0.0.1:4175/`, including the generated Content Security Policy. It is a local preview, not an Apache emulator.
+`check` runs ESLint, a production export, 16 release tests and the production dependency audit. `npm start` previews the static export at `http://127.0.0.1:4175/`, including the generated Content Security Policy. It is a local preview, not an Apache emulator.
 
 Run `npm run release` to repeat checks and create a dated ZIP and SHA-256 checksum in `releases/` (requires the `zip` command). The ZIP contains the contents of `out/`, including `.htaccess`, but not source files, dependencies, original design images, credentials or the local header manifest. GitHub Actions runs the same checks; it does not deploy automatically.
 

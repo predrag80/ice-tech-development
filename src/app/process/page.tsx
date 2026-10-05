@@ -3,6 +3,7 @@ import { pageMetadata } from "../site";
 import Link from "../StaticLink";
 import ScrollToTop from "../ScrollToTop";
 import styles from "./process.module.css";
+import { processSteps } from "../processSteps";
 
 export const metadata = pageMetadata("/process", "Our Process | ICE TECH DEVELOPMENT", "A clear, collaborative product process—from shared context and early prototypes to reliable software and continuous improvement.");
 
@@ -21,44 +22,6 @@ const principles = [
     number: "03",
     title: "Outcomes over output",
     text: "Priorities stay connected to business goals, user needs and measurable signs of success.",
-  },
-];
-
-const phases = [
-  {
-    number: "01",
-    title: "Understand",
-    label: "Context before code",
-    text: "We align on the problem, the people using the product and the business context. This gives the whole team one clear starting point.",
-    outputs: ["Project brief", "Success criteria", "Risk map"],
-  },
-  {
-    number: "02",
-    title: "Define",
-    label: "Focus the opportunity",
-    text: "We turn shared context into a realistic scope, delivery plan and technical direction—removing uncertainty before it becomes expensive.",
-    outputs: ["Prioritized scope", "Delivery roadmap", "Technical direction"],
-  },
-  {
-    number: "03",
-    title: "Design",
-    label: "Make ideas tangible",
-    text: "Flows, interfaces and prototypes make the experience visible early. We validate the important decisions before full production begins.",
-    outputs: ["User flows", "Interactive prototype", "Design foundation"],
-  },
-  {
-    number: "04",
-    title: "Build",
-    label: "Engineering from day one",
-    text: "Design and development move together in focused increments. You review real progress regularly, with quality built into every release.",
-    outputs: ["Production code", "Integrations", "Quality assurance"],
-  },
-  {
-    number: "05",
-    title: "Launch & evolve",
-    label: "Release, learn, improve",
-    text: "We launch carefully, monitor what matters and use real-world feedback to guide the next useful improvement.",
-    outputs: ["Deployment", "Monitoring", "Iteration roadmap"],
   },
 ];
 
@@ -85,12 +48,8 @@ function ProcessDiagram() {
       <svg viewBox="0 0 700 330" preserveAspectRatio="none" aria-hidden="true">
         <path d="M45 244C115 244 124 91 216 91S293 208 367 208 448 70 524 70 582 175 658 175" />
       </svg>
-      <ol>
-        <li><span>01</span><small>Understand</small></li>
-        <li><span>02</span><small>Define</small></li>
-        <li><span>03</span><small>Design</small></li>
-        <li><span>04</span><small>Build</small></li>
-        <li><span>05</span><small>Evolve</small></li>
+      <ol aria-label="Our five-phase process">
+        {processSteps.map(({ number, title }) => <li key={number}><span>{number}</span><small>{title}</small></li>)}
       </ol>
     </div>
   );
@@ -104,7 +63,7 @@ export default function ProcessPage() {
       <section id="main-content" tabIndex={-1} className={styles.hero}>
         <div className={`${styles.heroInner} page-shell`}>
           <div className={styles.heroCopy}>
-            <Link className={styles.backLink} href="/#about">← Back to our approach</Link>
+            <Link className={styles.backLink} href="/#approach">← Back to our approach</Link>
             <p>/ Our process</p>
             <h1>How ideas become<br /><span>products.</span></h1>
             <p className={styles.heroLead}>A collaborative path from shared context to reliable software—with visible progress and fewer surprises.</p>
@@ -137,7 +96,7 @@ export default function ProcessPage() {
             <p>We do not disappear behind a big reveal. Each phase creates useful evidence for the next one, and you stay close to the work throughout.</p>
           </div>
           <ol className={styles.phaseList}>
-            {phases.map((phase) => (
+            {processSteps.map((phase) => (
               <li key={phase.number}>
                 <div className={styles.phaseTitle}><span>{phase.number}</span><div><small>{phase.label}</small><h3>{phase.title}</h3></div></div>
                 <p>{phase.text}</p>

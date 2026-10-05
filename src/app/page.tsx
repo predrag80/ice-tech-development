@@ -5,19 +5,13 @@ import CtaParallax from "./CtaParallax";
 import ScrollToTop from "./ScrollToTop";
 import ProjectCover from "./projects/ProjectCover";
 import { projects } from "./projects/projectSummaries";
+import { processSteps } from "./processSteps";
+import { StudioIntro, ProjectFaq } from "./TrustContent";
 
 const services = [
   { number: "01", title: "Web Development", text: "High-performance websites and web applications built with modern technologies.", tags: ["React", "Next.js", "WordPress", "APIs"] },
   { number: "02", title: "Software Development", text: "Custom software designed around your business requirements.", tags: ["Architecture", "Backend", "Databases", "APIs"] },
   { number: "03", title: "Digital Products", text: "From an idea to a production-ready digital product.", tags: ["Strategy", "UX", "Development", "Deployment"] },
-];
-
-const process = [
-  ["01", "Understand", "We explore your goals, users and challenges."],
-  ["02", "Design", "We create practical, user-centered solutions."],
-  ["03", "Build", "We engineer scalable, maintainable software."],
-  ["04", "Launch", "We ensure a smooth and successful release."],
-  ["05", "Grow", "We keep improving based on real-world data."],
 ];
 
 const technologies = ["React", "Next.js", "TypeScript", "PHP", "Laravel", "Node.js", "PostgreSQL", "MySQL", "Docker", "AWS", "Vercel"];
@@ -178,10 +172,12 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section approach-section" id="about">
+      <StudioIntro />
+
+      <section className="section approach-section" id="approach">
         <div className="page-shell approach">
           <div className="approach-copy"><p className="kicker">/ Our approach</p><h2>From idea<br />to impact.</h2><p>We work as a true partner — combining technical expertise with a deep understanding of business goals.</p><div className="approach-tags" aria-label="Our disciplines"><span>Strategy</span><span>Design</span><span>Engineering</span></div><Link className="outline-button" href="/process">Learn more about our process</Link></div>
-          <div className="process-canvas"><Image src="/hero-mountain-editorial-v2.png" alt="" width={1672} height={941} sizes="(max-width: 900px) 100vw, 65vw" /><svg className="process-route" viewBox="0 0 760 330" preserveAspectRatio="none" aria-hidden="true"><path d="M42 65C130 25 130 150 230 135S320 55 390 100 440 240 520 210 650 130 720 170" /></svg><ol className="process-list">{process.map(([number, title, description]) => <li key={number}><span>{number}</span><div><strong>{title}</strong><p>{description}</p></div></li>)}</ol></div>
+          <div className="process-canvas"><Image src="/hero-mountain-editorial-v2.png" alt="" width={1672} height={941} sizes="(max-width: 900px) 100vw, 65vw" /><svg className="process-route" viewBox="0 0 760 330" preserveAspectRatio="none" aria-hidden="true"><path d="M42 65C130 25 130 150 230 135S320 55 390 100 440 240 520 210 650 130 720 170" /></svg><ol className="process-list" aria-label="Our five-phase process">{processSteps.map(({ number, title, summary }) => <li key={number}><span>{number}</span><div><strong>{title}</strong><p>{summary}</p></div></li>)}</ol></div>
         </div>
       </section>
 
@@ -196,6 +192,8 @@ export default function Home() {
         <div className="cta-manifesto"><i/><span>Ideas</span><span>Engineering</span><span>Impact</span></div>
         <Image className="cta-mountains" src="/cta-architectural-blueprint-v3.png" alt="" width={1672} height={941} sizes="100vw" />
       </div></section>
+
+      <ProjectFaq />
 
       <footer className="site-footer page-shell">
         <div><a href="#top"><Brand /></a><small>© 2026 ICE TECH DEVELOPMENT. All rights reserved.</small></div>
