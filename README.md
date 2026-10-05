@@ -4,6 +4,8 @@ Static Next.js website for ICE TECH DEVELOPMENT, built for `https://icetechdevel
 
 Internal navigation deliberately uses native document links through `StaticLink`. This avoids partial React Server Component/prefetch failures observed with this Next.js static export. Galleries and other client-side interactions still hydrate normally; each project opens with its first slide.
 
+`SectionNavigation` enhances section links with scrolling and keyboard focus without adding a URL fragment. Cross-page section targets are passed through a short-lived, tab-local session entry; existing hash links still work and are cleaned on arrival. Native hrefs remain available without JavaScript and for modified/new-tab clicks. Query parameters are preserved, and reduced-motion preferences are respected.
+
 ## Development
 
 ```bash
@@ -11,7 +13,7 @@ npm ci
 npm run dev
 ```
 
-Node.js 24 LTS is used in CI. Development runs on port 3000. Source images remain in `public/`; `npm run images` generates responsive, content-hashed WebP variants, the social card and app icon. Every new Next Image source must be listed in `scripts/optimize-images.mjs`.
+Node.js 24 LTS is used in CI. Development runs on port 3000. Source images remain in `public/`; `npm run images` generates responsive, content-hashed WebP variants, the social card and PNG/ICO favicons from the logo in `public/icon.svg`. Every new Next Image source must be listed in `scripts/optimize-images.mjs`.
 
 ## Verify and package
 
@@ -20,7 +22,7 @@ npm run check
 npm start
 ```
 
-`check` runs ESLint, a production export, 18 Node test groups (including 14 Python deployment tests) and the production dependency audit. Python 3 is required for the receiver tests. `npm start` previews the static export at `http://127.0.0.1:4175/`, including the generated Content Security Policy. It is a local preview, not an Apache emulator.
+`check` runs ESLint, a production export, 22 Node test groups (including 14 Python deployment tests) and the production dependency audit. Python 3 is required for the receiver tests. `npm start` previews the static export at `http://127.0.0.1:4175/`, including the generated Content Security Policy. It is a local preview, not an Apache emulator.
 
 Run `npm run release` to repeat checks and create a dated ZIP and SHA-256 checksum in `releases/` (requires the `zip` command). The ZIP contains the contents of `out/`, including `.htaccess`, but not source files, dependencies, original design images, credentials or the local header manifest. Production uses the clean GitHub Actions package, not an export made from a developer's untracked files.
 

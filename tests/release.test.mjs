@@ -4,6 +4,7 @@ import { readFile, stat, readdir } from "node:fs/promises";
 import { createHash } from "node:crypto";
 import { resolve, join } from "node:path";
 import { previewServer } from "../scripts/preview.mjs";
+import sharp from "sharp";
 
 const origin = "https://icetechdevelopment.com";
 const routes = ["/", "/services/", "/projects/", "/process/", "/projects/smoki-navijaj/", "/projects/hse-training/", "/projects/99bitcoins/"];
@@ -20,6 +21,9 @@ for (const route of routes) {
     assert.ok(html.includes(`<link rel="canonical" href="${origin}${route}"`));
     assert.ok(html.includes(`<meta property="og:url" content="${origin}${route}"`));
     assert.ok(html.includes(`${origin}/social-card.jpg`));
+    for (const icon of ["/favicon.ico?v=ice-tech-1", "/favicon-32x32.png?v=ice-tech-1", "/icon.svg?v=ice-tech-1", "/apple-touch-icon.png?v=ice-tech-1"]) {
+      assert.ok(html.includes(`href="${icon}"`), `${route}: missing brand icon ${icon}`);
+    }
     assert.doesNotMatch(html, /localhost:3000|mcp\.figma\.com|DUBIC|northwind|dashboard-pro/i);
     assert.equal((html.match(/aria-label="Primary navigation"/g) ?? []).length, 1);
     assert.match(html, /mailto:info@icetechdevelopment.com/);
@@ -59,6 +63,25 @@ test("SEO discovery contains only the seven real routes", async () => {
   const urls = [...xml.matchAll(/<loc>(.*?)<\/loc>/g)].map((m) => m[1]);
   assert.deepEqual(urls.sort(), routes.map((r) => origin + r).sort());
   assert.match(await readFile("out/robots.txt", "utf8"), /Sitemap: https:\/\/icetechdevelopment.com\/sitemap.xml/);
+});
+
+test("favicon variants contain the site's logo at the advertised sizes", async () => {
+  const ico = await readFile("out/favicon.ico");
+  assert.equal(ico.readUInt16LE(0), 0);
+  assert.equal(ico.readUInt16LE(2), 1);
+  assert.equal(ico.readUInt16LE(4), 3);
+  for (const [index, size] of [16, 32, 48].entries()) {
+    const entry = 6 + index * 16;
+    assert.equal(ico[entry], size);
+    assert.equal(ico[entry + 1], size);
+    const offset = ico.readUInt32LE(entry + 12);
+    const image = ico.subarray(offset, offset + ico.readUInt32LE(entry + 8));
+    const expected = await sharp("public/icon.svg").resize(size, size).png().toBuffer();
+    assert.deepEqual(image, expected);
+  }
+  for (const [file, size] of [["favicon-32x32.png", 32], ["apple-touch-icon.png", 180]]) {
+    assert.deepEqual(await readFile(`out/${file}`), await sharp("public/icon.svg").resize(size, size).png().toBuffer());
+  }
 });
 
 test("About identifies the business and the FAQ explains first contact", async () => {
@@ -170,4 +193,10 @@ test("static preview serves deep links, redirects, real 404 and security headers
   assert.equal(missing.status, 404);
   assert.match(await missing.text(), /This page isn/);
   assert.equal((await fetch(`${base}/.headers.json`)).status, 404);
+  for (const [file, type] of [["favicon.ico", "image/x-icon"], ["favicon-32x32.png", "image/png"], ["icon.svg", "image/svg+xml"]]) {
+    const icon = await fetch(`${base}/${file}?v=ice-tech-1`);
+    assert.equal(icon.status, 200);
+    assert.equal(icon.headers.get("content-type"), type);
+    assert.deepEqual(Buffer.from(await icon.arrayBuffer()), await readFile(`out/${file}`));
+  }
 });
