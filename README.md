@@ -26,7 +26,7 @@ Run `npm run release` to repeat checks and create a dated ZIP and SHA-256 checks
 
 ## Automatic deployment: one-time setup
 
-The workflow is implemented but must not be considered active until the receiver, environment and key are configured and an end-to-end deployment succeeds.
+**Active since 5 October 2026.** The restricted receiver and dedicated credential are installed, the `production` environment permits only the `main` branch, and the first push-triggered [verification and deployment run](https://github.com/predrag80/ice-tech-development/actions/runs/37285344230) completed successfully. The steps below document the setup for maintenance or recovery; do not create duplicate keys or overwrite the installed receiver without reviewing it.
 
 1. Create a GitHub `production` environment with a deployment branch policy allowing only the **main branch**, not pull requests or tags. Keep the existing required `check` ruleset; do not bypass it.
 2. Install `hosting/deploy-receiver.py` and `hosting/apache.htaccess` in `/home/prowebsy/.ice-tech-deploy/`, **outside** every document root, with directory mode 700 and file mode 600. Install reviewed files from an exact commit and verify their SHA-256 checksums. The receiver is run by `/bin/python3 -I`, compatible with the server's Python 3.6. Changes to the receiver or Apache template require a reviewed manual update; a site deploy cannot replace them.
@@ -75,6 +75,15 @@ For rollback, restore the backed-up release files **and its `.htaccess` together
 - Preserved the previous content in `ice-tech-predeploy-2026-10-04-6e8934f.zip` in the cPanel account home, outside the public directory. The release ZIP is also retained there. SSL validation files, mail settings, DNS and other domains were not changed.
 - Verified all 163 public release files byte-for-byte over HTTPS, seven page routes, per-page metadata and CSP hashes, HTTP/non-www redirects, a real 404, robots/sitemap, and protection of source/dotfiles. Desktop and 390px mobile browser checks passed, including the hamburger menu, project navigation and all three galleries; no browser errors were reported in these checks.
 - Confirmed `info@icetechdevelopment.com` exists without account restrictions. MX, SPF and DMARC records are present. Actual inbound/outbound email delivery still requires a mailbox test; existence and DNS records alone do not prove delivery.
+
+## First automatic deployment — 5 October 2026
+
+- Application/infrastructure commit `8588f094697fc98080ecb8ab8bd873f261eb3af2` was deployed by GitHub Actions after PR #10 merged and all checks passed. Earlier team/FAQ/project-content changes are included; the personal name and all anonymous leadership roles are absent.
+- Release: `ice-tech-production-2026-10-05T08-43-35-646Z.zip`, SHA-256 `34b46748908a610b58a71d8a5ce953a49b3af3d1afcca4f71041e8ecf4136e88`.
+- Automatic pre-deploy backup: `/home/prowebsy/.ice-tech-deploy/release-8588f094697f-s106077w/site`. The earlier manual `ice-tech-predeploy-2026-10-05-before-content.zip` backup also remains outside the public root.
+- Verified all 162 public package files byte-for-byte, all seven routes, inline-script CSP hashes, canonical HTTPS redirects, branded 404, robots/sitemap and source/dotfile protection. Desktop and 390px mobile checks passed for the team section, menu, FAQ and project galleries, without browser errors.
+- The dedicated key successfully authenticated but refused an ordinary shell command. Server-side atomic exchange was probed before activation; all 14 receiver tests passed in Linux CI, including security rejection, backup preservation, atomic exchange and simulated verification-failure rollback.
+- Future successful `main` pushes publish automatically. Inspect the latest Actions run and the server's private `current.json` for the current commit and backup; the entry above records the initial activation, not every later deployment.
 
 ## Launch checklist
 
