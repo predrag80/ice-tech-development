@@ -132,7 +132,7 @@ export default function Home() {
           <p className="microcopy">Web / Software / Digital products</p>
           <h1>Ideas.<br /><span>Engineered.</span></h1>
           <p className="hero-lead">We design and build modern web applications and software that help businesses grow.</p>
-          <div className="hero-actions"><span className="hero-primary-action"><a className="button" href="mailto:hello@icetechdevelopment.com">Start a project <span>→</span></a><small className="hero-email-note">Starts with an email</small></span><a className="line-link" href="#work">See our work</a></div>
+          <div className="hero-actions"><span className="hero-primary-action"><a className="button" href="mailto:info@icetechdevelopment.com">Start a project <span>→</span></a><small className="hero-email-note">Starts with an email</small></span><a className="line-link" href="#work">See our work</a></div>
         </div>
         <div className="hero-manifesto"><i /><span>Scalable</span><span>Secure</span><span>Impactful</span><span>Software</span></div>
         <Image className="hero-mountains" src="/hero-blue-clouds-v2.webp" alt="" width={1860} height={846} sizes="100vw" loading="eager" fetchPriority="high" />
@@ -192,7 +192,7 @@ export default function Home() {
 
       <section className="cta" id="contact"><div className="page-shell cta-inner">
         <CtaParallax />
-        <div className="cta-copy"><p className="cta-eyebrow">Same curiosity.<br />A brighter tomorrow.</p><h2>Let&apos;s build<br />what&apos;s next.</h2><p>Tell us about your project, goals and timeline by email.</p><div><a className="button" href="mailto:hello@icetechdevelopment.com">Send us an email <span>→</span></a><a className="line-link" href="mailto:hello@icetechdevelopment.com">hello@icetechdevelopment.com</a></div><small className="cta-email-note">No forms — just a direct conversation.</small></div>
+        <div className="cta-copy"><p className="cta-eyebrow">Same curiosity.<br />A brighter tomorrow.</p><h2>Let&apos;s build<br />what&apos;s next.</h2><p>Tell us about your project, goals and timeline by email.</p><div><a className="button" href="mailto:info@icetechdevelopment.com">Send us an email <span>→</span></a><a className="line-link" href="mailto:info@icetechdevelopment.com">info@icetechdevelopment.com</a></div><small className="cta-email-note">No forms — just a direct conversation.</small></div>
         <div className="cta-manifesto"><i/><span>Ideas</span><span>Engineering</span><span>Impact</span></div>
         <Image className="cta-mountains" src="/cta-architectural-blueprint-v3.png" alt="" width={1672} height={941} sizes="100vw" />
       </div></section>
@@ -200,7 +200,7 @@ export default function Home() {
       <footer className="site-footer page-shell">
         <div><a href="#top"><Brand /></a><small>© 2026 ICE TECH DEVELOPMENT. All rights reserved.</small></div>
         <nav><a href="#services">Services</a><a href="#work">Work</a><a href="#about">About</a><Link href="/process">Process</Link><a href="#contact">Contact</a></nav>
-        <div className="footer-contact"><p>Belgrade / Serbia<br/>Working worldwide<a className="footer-email" href="mailto:hello@icetechdevelopment.com">hello@icetechdevelopment.com</a></p><div><a href="mailto:hello@icetechdevelopment.com" aria-label="Email"><SocialIcon name="mail" /></a></div><small>Ideas / Engineering / Impact</small></div>
+        <div className="footer-contact"><p>Belgrade / Serbia<br/>Working worldwide<a className="footer-email" href="mailto:info@icetechdevelopment.com">info@icetechdevelopment.com</a></p><div><a href="mailto:info@icetechdevelopment.com" aria-label="Email"><SocialIcon name="mail" /></a></div><small>Ideas / Engineering / Impact</small></div>
       </footer>
       <ScrollToTop />
     </main>

@@ -19,8 +19,8 @@ export default function SiteHeader({ active, home = false }: { active?: "service
         </svg><span>ICE TECH<small>DEVELOPMENT</small></span>
       </span></Link>
       <nav className="desktop-nav" aria-label="Primary navigation">{navigation}</nav>
-      <a className="button button-compact header-action" href="mailto:hello@icetechdevelopment.com">Send us email <span aria-hidden="true">→</span></a>
-      <MobileMenu><Link href="/">Home</Link>{navigation}<a href="mailto:hello@icetechdevelopment.com">Send us email</a></MobileMenu>
+      <a className="button button-compact header-action" href="mailto:info@icetechdevelopment.com">Send us email <span aria-hidden="true">→</span></a>
+      <MobileMenu><Link href="/">Home</Link>{navigation}<a href="mailto:info@icetechdevelopment.com">Send us email</a></MobileMenu>
     </header>
   );
 }

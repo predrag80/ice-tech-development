@@ -255,7 +255,7 @@ export default function ProjectCaseStudy({ project }: { project: ProjectCaseStud
           <p className={styles.sectionLabel}>/ Start a conversation</p>
           <h2>Have a project<br />with similar ambition?</h2>
           <p>Tell us about your goals, context and timeline by email.</p>
-          <div><a className="button" href="mailto:hello@icetechdevelopment.com">Send us an email <span>→</span></a><a href="mailto:hello@icetechdevelopment.com">hello@icetechdevelopment.com</a></div>
+          <div><a className="button" href="mailto:info@icetechdevelopment.com">Send us an email <span>→</span></a><a href="mailto:info@icetechdevelopment.com">info@icetechdevelopment.com</a></div>
           <small>No forms — just a direct conversation.</small>
         </div>
       </section>
@@ -263,7 +263,7 @@ export default function ProjectCaseStudy({ project }: { project: ProjectCaseStud
       <footer className={`${styles.footer} page-shell`}>
         <div><Link href="/"><Brand /></Link><small>© 2026 ICE TECH DEVELOPMENT</small></div>
         <Link className={styles.nextProject} href={project.nextHref}><span>Next project</span><strong>{project.nextProject}&nbsp; ↗</strong></Link>
-        <div className={styles.footerContact}><span>Belgrade / Serbia<br />Working worldwide</span><a href="mailto:hello@icetechdevelopment.com">hello@icetechdevelopment.com</a></div>
+        <div className={styles.footerContact}><span>Belgrade / Serbia<br />Working worldwide</span><a href="mailto:info@icetechdevelopment.com">info@icetechdevelopment.com</a></div>
       </footer>
       <ScrollToTop />
     </main>

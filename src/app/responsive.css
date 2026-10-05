@@ -15,8 +15,18 @@
 .desktop-nav a { display: inline-flex; align-items: center; min-height: 44px; }
 .desktop-nav a::after { bottom: 0; }
 .desktop-nav a[aria-current="page"]::after { opacity: 1; transform: rotate(-.35deg) scaleX(1); }
-.mobile-menu summary { min-width: 44px; min-height: 44px; display: grid; place-items: center; font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.mobile-menu summary { width: 44px; min-height: 44px; display: grid; place-items: center; list-style: none; cursor: pointer; color: var(--ink); }
 .mobile-menu summary::after { content: none; }
+.mobile-menu summary::-webkit-details-marker { display: none; }
+.mobile-menu summary:hover { color: var(--blue); }
+.mobile-menu-icon { position: relative; width: 24px; height: 24px; }
+.mobile-menu-icon span { position: absolute; left: 0; width: 24px; height: 2px; border-radius: 2px; background: currentColor; transition: transform 180ms ease, opacity 180ms ease; }
+.mobile-menu-icon span:nth-child(1) { top: 5px; }
+.mobile-menu-icon span:nth-child(2) { top: 11px; }
+.mobile-menu-icon span:nth-child(3) { top: 17px; }
+.mobile-menu[open] .mobile-menu-icon span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.mobile-menu[open] .mobile-menu-icon span:nth-child(2) { opacity: 0; }
+.mobile-menu[open] .mobile-menu-icon span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
 .mobile-menu nav a { min-height: 44px; display: flex; align-items: center; }
 .mobile-menu nav { gap: 0; padding: 12px 22px; top: 48px; }
 .mobile-menu a[aria-current="page"] { color: #175ca9; font-weight: 700; }

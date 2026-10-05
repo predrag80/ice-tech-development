@@ -161,14 +161,14 @@ export default function ProcessPage() {
         <div className={`${styles.ctaInner} page-shell`}>
           <p>/ Start with context</p>
           <h2>Tell us what you are<br />trying to change.</h2>
-          <div><span>A useful first conversation starts with your goals, constraints and timeline.</span><a className="button" href="mailto:hello@icetechdevelopment.com">Send us an email <b>→</b></a></div>
+          <div><span>A useful first conversation starts with your goals, constraints and timeline.</span><a className="button" href="mailto:info@icetechdevelopment.com">Send us an email <b>→</b></a></div>
         </div>
       </section>
 
       <footer className={`${styles.footer} page-shell`}>
         <div><Link href="/"><Brand /></Link><small>© 2026 ICE TECH DEVELOPMENT</small></div>
         <nav><Link href="/services">Services</Link><Link href="/projects">Work</Link><Link href="/#about">About</Link><Link href="/process">Process</Link><Link href="/#contact">Contact</Link></nav>
-        <div><span>Belgrade / Serbia<br />Working worldwide</span><a href="mailto:hello@icetechdevelopment.com">hello@icetechdevelopment.com</a></div>
+        <div><span>Belgrade / Serbia<br />Working worldwide</span><a href="mailto:info@icetechdevelopment.com">info@icetechdevelopment.com</a></div>
       </footer>
       <ScrollToTop />
     </main>
