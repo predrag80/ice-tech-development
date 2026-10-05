@@ -1,6 +1,6 @@
 # ICE TECH DEVELOPMENT
 
-Static Next.js website for ICE TECH DEVELOPMENT, built for `https://icetechdevelopment.com/` and Apache-compatible Unlimited hosting. The host serves exported files; it does not run Node.js or Next.js. Publishing is a separate, manual step.
+Static Next.js website for ICE TECH DEVELOPMENT, built for `https://icetechdevelopment.com/` and Apache-compatible Unlimited hosting. The host serves exported files; it does not run Node.js or Next.js. GitHub Actions verifies the release, then deploys successful `main` builds through a restricted SSH receiver once the one-time setup below is complete.
 
 Internal navigation deliberately uses native document links through `StaticLink`. This avoids partial React Server Component/prefetch failures observed with this Next.js static export. Galleries and other client-side interactions still hydrate normally; each project opens with its first slide.
 
@@ -20,11 +20,35 @@ npm run check
 npm start
 ```
 
-`check` runs ESLint, a production export, 16 release tests and the production dependency audit. `npm start` previews the static export at `http://127.0.0.1:4175/`, including the generated Content Security Policy. It is a local preview, not an Apache emulator.
+`check` runs ESLint, a production export, 18 Node test groups (including 14 Python deployment tests) and the production dependency audit. Python 3 is required for the receiver tests. `npm start` previews the static export at `http://127.0.0.1:4175/`, including the generated Content Security Policy. It is a local preview, not an Apache emulator.
 
-Run `npm run release` to repeat checks and create a dated ZIP and SHA-256 checksum in `releases/` (requires the `zip` command). The ZIP contains the contents of `out/`, including `.htaccess`, but not source files, dependencies, original design images, credentials or the local header manifest. GitHub Actions runs the same checks; it does not deploy automatically.
+Run `npm run release` to repeat checks and create a dated ZIP and SHA-256 checksum in `releases/` (requires the `zip` command). The ZIP contains the contents of `out/`, including `.htaccess`, but not source files, dependencies, original design images, credentials or the local header manifest. Production uses the clean GitHub Actions package, not an export made from a developer's untracked files.
 
-## Deploy to Unlimited
+## Automatic deployment: one-time setup
+
+The workflow is implemented but must not be considered active until the receiver, environment and key are configured and an end-to-end deployment succeeds.
+
+1. Create a GitHub `production` environment with a deployment branch policy allowing only the **main branch**, not pull requests or tags. Keep the existing required `check` ruleset; do not bypass it.
+2. Install `hosting/deploy-receiver.py` and `hosting/apache.htaccess` in `/home/prowebsy/.ice-tech-deploy/`, **outside** every document root, with directory mode 700 and file mode 600. Install reviewed files from an exact commit and verify their SHA-256 checksums. The receiver is run by `/bin/python3 -I`, compatible with the server's Python 3.6. Changes to the receiver or Apache template require a reviewed manual update; a site deploy cannot replace them.
+3. Create a dedicated Ed25519 key for this repository only. Append its **public** key to the account's `authorized_keys` with these options (preserve all existing entries):
+
+   ```text
+   restrict,command="/bin/python3 -I /home/prowebsy/.ice-tech-deploy/deploy-receiver.py" ssh-ed25519 PUBLIC_KEY ice-tech-github-deploy
+   ```
+
+   This key cannot open a shell, use SFTP/SCP, forward ports or choose another deployment directory. The receiver only accepts a ZIP of allowed static files and a fixed Apache configuration; arbitrary server-side scripts and Apache directives are rejected. It is a constrained publishing credential, not OS-level isolation from the hosting account.
+4. Save the private key as the `UNLIMITED_DEPLOY_KEY` **environment secret** under `production`; never place it in source, a PR, chat, shell history, or a public artifact. Do not reuse the account's normal SSH key. SSH uses `s34.unlimited.rs:9780` and `prowebsy`. Its pinned Ed25519 host key in `hosting/unlimited-known-hosts` was verified against the server's loopback fingerprint through the authenticated cPanel terminal on 5 October 2026. If it changes, verify it independently with the host; do not disable host-key checking.
+5. Merge through the protected PR workflow. The `Deploy to Unlimited` job depends on `check`, downloads **that same run's** archive, verifies its checksum, rejects outdated commits, and sends it to the receiver. It never receives production secrets on PR runs. A manual retry is available under Actions → Verify production release → Run workflow → main.
+
+The receiver stages a complete site, preserving `/.well-known/`, existing unmanaged files and old hashed assets. It rejects symlinks, special files, path traversal, oversized ZIPs and mismatched HTML/CSP. Linux `RENAME_EXCHANGE` atomically swaps the prepared directory with `/home/prowebsy/icetechdevelopment.com`, so HTML and CSP change together. This capability was successfully probed on the actual host using two disposable empty directories. The public candidate uses 755 directories and 644 new files so Apache can read it; mail and other domains are untouched.
+
+Seven real routes are verified over HTTPS after publishing. Failure automatically exchanges the complete previous site back into place. GitHub concurrency plus a server-side lock prevent overlapping deploys. The previous directory remains under `.ice-tech-deploy/release-…/site`, and `current.json` records the deployed commit, checksum, backup and managed file list. No backup is automatically deleted; review disk usage and retain the desired recovery history. Obsolete managed pages disappear from the new release, while previous hashed assets remain for open browser tabs.
+
+For a later manual rollback, prefer reverting the application commit through a PR: the pipeline publishes a freshly checked version. For an emergency, use the authenticated cPanel terminal and the recorded backup with the receiver's `exchange()` function under the same `deploy.lock`; restore HTML and `.htaccess` together. Do not grant the deploy key unrestricted shell access to perform recovery.
+
+Provider/reference documentation: [Unlimited SSH access and port](https://panel.unlimited.rs/index.php?rp=/knowledgebase/49/Pristup-putem-SSH-Shell.html), [GitHub deployment controls](https://docs.github.com/en/actions/how-tos/deploy/configure-and-manage-deployments/control-deployments).
+
+## Manual deployment fallback
 
 1. In cPanel, locate the document root for **icetechdevelopment.com** under Domains. Do not assume it is `public_html` if the domain is an addon domain. Back up its existing files and `.htaccess` outside the public directory first; preserve mail and unrelated applications.
 2. Check SSL/TLS Status and AutoSSL for both the apex domain and `www`. The supplied rewrite rules assume direct Apache/LiteSpeed TLS; if a CDN terminates TLS, confirm its proxy settings with the host before enabling the redirect to avoid a loop. [Unlimited SSL instructions](https://panel.unlimited.rs/index.php?rp=/knowledgebase/40/SSL-sertifikati-i-HTTPS-saobracaj.html).

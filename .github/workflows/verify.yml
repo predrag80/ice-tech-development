@@ -3,6 +3,7 @@ on:
   push:
     branches: [main]
   pull_request:
+  workflow_dispatch:
 permissions:
   contents: read
 jobs:
@@ -29,3 +30,35 @@ jobs:
             releases/
             audit.json
           retention-days: 14
+  deploy:
+    name: Deploy to Unlimited
+    needs: check
+    if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+      actions: read
+    environment:
+      name: production
+      url: https://icetechdevelopment.com/
+    concurrency:
+      group: unlimited-production
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 24
+      - name: Reject an outdated commit
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: test "$(gh api "repos/$GITHUB_REPOSITORY/commits/main" --jq .sha)" = "$GITHUB_SHA"
+      - name: Download this run's checked release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh run download "$GITHUB_RUN_ID" --repo "$GITHUB_REPOSITORY" --name release-and-audit --dir "$RUNNER_TEMP/ice-tech-release"
+      - name: Publish with backup and automatic rollback
+        env:
+          UNLIMITED_DEPLOY_KEY: ${{ secrets.UNLIMITED_DEPLOY_KEY }}
+        run: node scripts/deploy-unlimited.mjs "$RUNNER_TEMP/ice-tech-release/releases"
