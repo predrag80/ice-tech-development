@@ -67,10 +67,9 @@ test("About identifies the business and the FAQ explains first contact", async (
   assert.ok(about, "About navigation must lead to the business introduction");
   assert.match(about, /Who we are/);
   assert.match(about, /Belgrade, Serbia/);
-  assert.match(about, /founder-led development team/);
+  assert.match(about, /a development team based in Belgrade/);
   assert.doesNotMatch(html, /Predrag (?:Vučković|Vuckovic)/i);
-  assert.match(about, /Founder &amp; Lead Developer/);
-  assert.match(about, /Project Manager/);
+  assert.doesNotMatch(html, /leadership|founder|lead developer|project manager/i);
   assert.match(html, /id="approach"/);
   const faq = html.match(/<section\b[^>]*id="project-faq"[^>]*>([\s\S]*?)<\/section>/)?.[1];
   assert.ok(faq);
