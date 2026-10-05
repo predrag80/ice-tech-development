@@ -8,14 +8,9 @@ export function StudioIntro() {
         <p className={styles.eyebrow}>/ Who we are</p>
         <h2 id="about-title">Development with<br />a clear purpose.</h2>
         <Link className="line-link" href="/projects/">Explore our work</Link>
-        <div className={styles.leadership}>
-          <p>Leadership</p>
-          <h3>Founder &amp; Lead Developer</h3>
-          <span>Project Manager</span>
-        </div>
       </div>
       <div className={styles.aboutCopy}>
-        <p>ICE TECH DEVELOPMENT is a founder-led development team based in Belgrade, Serbia. We design and build websites, web applications and custom software for clients worldwide.</p>
+        <p>ICE TECH DEVELOPMENT is a development team based in Belgrade, Serbia. We design and build websites, web applications and custom software for clients worldwide.</p>
         <p>Our work spans interactive fan experiences, corporate websites and content platforms with custom integrations. The selected projects show the features we developed and the technology behind them.</p>
         <dl className={styles.facts}>
           <div><dt>Based in</dt><dd>Belgrade, Serbia</dd></div>
