@@ -68,7 +68,7 @@ test("About identifies the business and the FAQ explains first contact", async (
   assert.match(about, /Who we are/);
   assert.match(about, /Belgrade, Serbia/);
   assert.match(about, /founder-led development team/);
-  assert.match(about, /Predrag Vučković/);
+  assert.doesNotMatch(html, /Predrag (?:Vučković|Vuckovic)/i);
   assert.match(about, /Founder &amp; Lead Developer/);
   assert.match(about, /Project Manager/);
   assert.match(html, /id="approach"/);

@@ -10,8 +10,8 @@ export function StudioIntro() {
         <Link className="line-link" href="/projects/">Explore our work</Link>
         <div className={styles.leadership}>
           <p>Leadership</p>
-          <h3>Predrag Vučković</h3>
-          <span>Founder &amp; Lead Developer<br />Project Manager</span>
+          <h3>Founder &amp; Lead Developer</h3>
+          <span>Project Manager</span>
         </div>
       </div>
       <div className={styles.aboutCopy}>
