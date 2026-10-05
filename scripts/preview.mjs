@@ -3,7 +3,7 @@ import { readFile, stat } from "node:fs/promises";
 import { resolve, extname, sep } from "node:path";
 import { pathToFileURL } from "node:url";
 
-const types = { ".html": "text/html; charset=utf-8", ".css": "text/css", ".js": "application/javascript", ".json": "application/json", ".txt": "text/plain; charset=utf-8", ".xml": "application/xml", ".webp": "image/webp", ".png": "image/png", ".jpg": "image/jpeg", ".svg": "image/svg+xml", ".woff2": "font/woff2" };
+const types = { ".html": "text/html; charset=utf-8", ".css": "text/css", ".js": "application/javascript", ".json": "application/json", ".txt": "text/plain; charset=utf-8", ".xml": "application/xml", ".webp": "image/webp", ".png": "image/png", ".jpg": "image/jpeg", ".svg": "image/svg+xml", ".ico": "image/x-icon", ".woff2": "font/woff2" };
 
 export async function previewServer(root = resolve("out")) {
   const headers = JSON.parse(await readFile(resolve(root, ".headers.json"), "utf8"));

@@ -11,6 +11,8 @@
 /public/media/
 /public/social-card.jpg
 /public/apple-touch-icon.png
+/public/favicon.ico
+/public/favicon-32x32.png
 
 # misc
 .DS_Store
