@@ -1,0 +1,3 @@
+# Verified against the server's loopback SSH fingerprint through authenticated cPanel.
+# SHA256:51yOSdmVoNGGV1uHl/o/yKOCf1sxDtxoVX5myyyicB4
+[s34.unlimited.rs]:9780 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA3NOVPzX+SVVa2v+1/AKoggupXl/dasGrHnpD6VrpFI
