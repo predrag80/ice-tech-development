@@ -1,7 +1,8 @@
 import SiteHeader from "./SiteHeader";
-import Image from "next/image";
 import Link from "./StaticLink";
-import CtaParallax from "./CtaParallax";
+import ProductHero from "./ProductHero";
+import SoftwareContact from "./SoftwareContact";
+import styles from "./product-led.module.css";
 import ScrollToTop from "./ScrollToTop";
 import ProjectCover from "./projects/ProjectCover";
 import { projects } from "./projects/projectSummaries";
@@ -15,20 +16,6 @@ const services = [
 ];
 
 const technologies = ["React", "Next.js", "TypeScript", "PHP", "Laravel", "Node.js", "PostgreSQL", "MySQL", "Docker", "AWS", "Vercel"];
-
-function CodePanel() {
-  return (
-    <div className="code-panel" aria-label="Code editor preview">
-      <div className="code-panel-bar"><span className="code-workspace">◈ ICE TECH</span><span className="code-tab">◉ app.tsx&nbsp; ×</span></div>
-      <div className="code-panel-body">
-        <aside className="code-tree" aria-hidden="true"><b>▾ src</b><span>› components</span><span>› pages</span><span>› lib</span><span>› styles</span><span>› types</span><span>› utils</span></aside>
-        <ol aria-hidden="true"><li>1</li><li>2</li><li>3</li><li>6</li><li>9</li><li>15</li></ol>
-        <pre><code><span className="code-purple">export default</span> <span className="code-blue">function</span> Home() {`{`}{"\n"}  <span className="code-purple">return</span> ({"\n"}    &lt;<span className="code-blue">main</span>&gt;{"\n"}      &lt;<span className="code-blue">Hero</span> /&gt;{"\n"}      &lt;<span className="code-blue">Services</span> /&gt;{"\n"}      &lt;<span className="code-blue">Projects</span> /&gt;{"\n"}    &lt;/<span className="code-blue">main</span>&gt;{"\n"}  ){"\n"}{`}`}</code></pre>
-      </div>
-      <div className="code-panel-status"><span>main*</span><span>✓ deployed</span><span>100% typed</span></div>
-    </div>
-  );
-}
 
 function MountainMark() {
   return (
@@ -115,32 +102,10 @@ function SocialIcon({ name }: { name: "linkedin" | "github" | "mail" }) {
 
 export default function Home() {
   return (
-    <main id="top">
+    <main id="top" className={styles.home}>
       <SiteHeader home />
 
-      <section id="main-content" tabIndex={-1} className="hero">
-        <div className="hero-knife-lines" aria-hidden="true"><i /><i /><i /><i /><i /></div>
-        <div className="hero-inner page-shell">
-        <svg className="hero-tech-line" viewBox="0 0 1000 500" preserveAspectRatio="none" aria-hidden="true"><path d="M320 120H520Q568 120 568 163V228Q568 264 606 264H910" /><circle cx="365" cy="120" r="2.5" /><circle cx="403" cy="120" r="2.5" /><circle cx="460" cy="120" r="5" /><circle cx="568" cy="228" r="4" /><circle cx="910" cy="264" r="5" /></svg>
-        <div className="hero-copy">
-          <p className="microcopy">Web / Software / Digital products</p>
-          <h1>Ideas.<br /><span>Engineered.</span></h1>
-          <p className="hero-lead">We design and build modern web applications and software that help businesses grow.</p>
-          <div className="hero-actions"><span className="hero-primary-action"><a className="button" href="mailto:info@icetechdevelopment.com">Start a project <span>→</span></a><small className="hero-email-note">Starts with an email</small></span><a className="line-link" href="#work">See our work</a></div>
-        </div>
-        <div className="hero-manifesto"><i /><span>Scalable</span><span>Secure</span><span>Impactful</span><span>Software</span></div>
-        <Image className="hero-mountains" src="/hero-blue-clouds-v2.webp" alt="" width={1860} height={846} sizes="100vw" loading="eager" fetchPriority="high" />
-        <div className="hero-right-texture" aria-hidden="true" />
-        <div className="code-paper-tear" aria-hidden="true" />
-        <div className="code-panel-overhang" aria-hidden="true" />
-        <CodePanel />
-        <p className="hero-note">High<br />Performance<br />Web Applications</p>
-        <p className="hero-coordinates">43.8103° N<br />7.1128° E</p>
-        <i className="hero-data-rail" aria-hidden="true" />
-        <p className="balance-note">Built in balance.</p>
-        <div className="hero-values"><span>People</span><span>Technology</span><span>A brighter tomorrow</span></div>
-        </div>
-      </section>
+      <ProductHero />
 
       <section className="section page-shell" id="services">
         <div className="section-intro services-intro">
@@ -155,12 +120,12 @@ export default function Home() {
 
       <section className="section projects-section" id="work">
         <div className="page-shell">
-          <div className="section-intro projects-intro"><div><p className="kicker">/ Featured work</p><h2>Selected projects</h2></div><p className="projects-proof">Real products.<br />Real results.</p><Link className="line-link" href="/projects">View all projects →</Link></div>
+          <div className="section-intro projects-intro"><div><p className="kicker">/ Featured work</p><h2>Selected projects</h2></div><p className="projects-proof">Different challenges.<br />Thoughtful engineering.</p><Link className="line-link" href="/projects">View all projects →</Link></div>
           <div className="projects-grid">
             {projects.map((project) => (
               <article className="project-card" key={project.slug}>
                 <Link className="project-thumb-link" href={`/projects/${project.slug}`} aria-label={`View the ${project.name} project case study`}>
-                  <ProjectCover type={project.visual} className="project-thumb" />
+                  <ProjectCover type={project.visual} />
                 </Link>
                 <div className="project-type">{project.number} / {project.category}</div>
                 <div className="project-title"><h3><Link href={`/projects/${project.slug}`}>{project.name}</Link></h3><Link className="project-title-link" href={`/projects/${project.slug}`}>View project <b aria-hidden="true">↗</b></Link></div>
@@ -177,7 +142,7 @@ export default function Home() {
       <section className="section approach-section" id="approach">
         <div className="page-shell approach">
           <div className="approach-copy"><p className="kicker">/ Our approach</p><h2>From idea<br />to impact.</h2><p>We work as a true partner — combining technical expertise with a deep understanding of business goals.</p><div className="approach-tags" aria-label="Our disciplines"><span>Strategy</span><span>Design</span><span>Engineering</span></div><Link className="outline-button" href="/process">Learn more about our process</Link></div>
-          <div className="process-canvas"><Image src="/hero-mountain-editorial-v2.png" alt="" width={1672} height={941} sizes="(max-width: 900px) 100vw, 65vw" /><svg className="process-route" viewBox="0 0 760 330" preserveAspectRatio="none" aria-hidden="true"><path d="M42 65C130 25 130 150 230 135S320 55 390 100 440 240 520 210 650 130 720 170" /></svg><ol className="process-list" aria-label="Our five-phase process">{processSteps.map(({ number, title, summary }) => <li key={number}><span>{number}</span><div><strong>{title}</strong><p>{summary}</p></div></li>)}</ol></div>
+          <ol className={styles.process} aria-label="Our five-phase process">{processSteps.map(({ number, title, summary }) => <li key={number}><span>{number}</span><div><strong>{title}</strong><p>{summary}</p></div></li>)}</ol>
         </div>
       </section>
 
@@ -186,12 +151,7 @@ export default function Home() {
         <div className="technology-row">{technologies.map((name) => <div key={name}><b><TechIcon name={name} /></b><span>{name}</span></div>)}</div>
       </section>
 
-      <section className="cta" id="contact"><div className="page-shell cta-inner">
-        <CtaParallax />
-        <div className="cta-copy"><p className="cta-eyebrow">Same curiosity.<br />A brighter tomorrow.</p><h2>Let&apos;s build<br />what&apos;s next.</h2><p>Tell us about your project, goals and timeline by email.</p><div><a className="button" href="mailto:info@icetechdevelopment.com">Send us an email <span>→</span></a><a className="line-link" href="mailto:info@icetechdevelopment.com">info@icetechdevelopment.com</a></div><small className="cta-email-note">No forms — just a direct conversation.</small></div>
-        <div className="cta-manifesto"><i/><span>Ideas</span><span>Engineering</span><span>Impact</span></div>
-        <Image className="cta-mountains" src="/cta-architectural-blueprint-v3.png" alt="" width={1672} height={941} sizes="100vw" />
-      </div></section>
+      <SoftwareContact />
 
       <ProjectFaq />
 

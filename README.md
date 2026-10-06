@@ -22,7 +22,9 @@ npm run check
 npm start
 ```
 
-`check` runs ESLint, a production export, 22 Node test groups (including 14 Python deployment tests) and the production dependency audit. Python 3 is required for the receiver tests. `npm start` previews the static export at `http://127.0.0.1:4175/`, including the generated Content Security Policy. It is a local preview, not an Apache emulator.
+`check` runs ESLint, a production export, 23 Node test groups (including 14 Python deployment tests) and the production dependency audit. Python 3 is required for the receiver tests. `npm start` previews the static export at `http://127.0.0.1:4175/`, including the generated Content Security Policy. It is a local preview, not an Apache emulator.
+
+The homepage hero uses a code-native ICE TECH concept illustration, not a client project or a working application. Client work belongs in the project sections: Smoki and 99Bitcoins covers use existing application screenshots; HSE uses an HTML layout preview with its existing image. The contact illustration is also code-native and retains reduced-motion-aware parallax. Release tests keep client projects out of the hero and calculate the image budget from the assets actually rendered on the homepage.
 
 Run `npm run release` to repeat checks and create a dated ZIP and SHA-256 checksum in `releases/` (requires the `zip` command). The ZIP contains the contents of `out/`, including `.htaccess`, but not source files, dependencies, original design images, credentials or the local header manifest. Production uses the clean GitHub Actions package, not an export made from a developer's untracked files.
 
@@ -97,6 +99,6 @@ For rollback, restore the backed-up release files **and its `.htaccess` together
 
 ## Dependency security
 
-On 4 October 2026, `npm audit --omit=dev` reports zero vulnerabilities. The full audit reports five high-severity package entries in one ESLint development chain: `eslint-config-next → @next/eslint-plugin-next → fast-glob → micromatch → braces`. [GHSA-vfj7-8cjw-p6xm](https://github.com/advisories/GHSA-vfj7-8cjw-p6xm) has no patched version, and the registry's latest braces version is 3.0.3. This dependency is not shipped to the static host.
+On 6 October 2026, `npm audit --omit=dev` reports zero vulnerabilities after updating the transitive `source-map-js` dependency from 1.2.1 to 1.2.2 to address [GHSA-68fv-2mgg-jv7q](https://github.com/advisories/GHSA-68fv-2mgg-jv7q). The full audit still reports five high-severity package entries in one ESLint development chain: `eslint-config-next → @next/eslint-plugin-next → fast-glob → micromatch → braces`. The previously accepted [GHSA-vfj7-8cjw-p6xm](https://github.com/advisories/GHSA-vfj7-8cjw-p6xm) limitation remains; this development dependency is not shipped to the static host.
 
 Do not run `npm audit fix --force`: its suggested Next ESLint downgrade does not match this Next.js version. Run lint only on trusted project input, retain the full CI audit report, and apply a compatible upstream fix when published. Dependabot is configured for weekly npm checks. This is a documented open development-tooling issue, not a claim that the full dependency tree is vulnerability-free.

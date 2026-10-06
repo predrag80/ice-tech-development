@@ -157,13 +157,38 @@ test("responsive images exist and homepage imagery is below 1 MB at 1200px", asy
     for (const src of Object.values(variants)) assert.ok((await stat(join("out", src))).size > 0);
   }
   let total = 0;
-  for (const src of ["/hero-blue-clouds-v2.webp", "/hero-mountain-editorial-v2.png", "/cta-architectural-blueprint-v3.png", "/project-smoki-cover.jpg", "/project-hse-hero.webp", "/project-99bitcoins-cover.png"]) {
-    const variants = manifest[src];
+  const renderedImages = [...(await page("/")).matchAll(/<img\b[^>]*>/g)].map(([tag]) => tag).join("\n");
+  const homepageVariants = Object.values(manifest).filter((variants) => Object.values(variants).some((src) => renderedImages.includes(src)));
+  assert.ok(homepageVariants.length >= 4, "Homepage image budget must cover the actual rendered assets");
+  for (const variants of homepageVariants) {
     const widths = Object.keys(variants).map(Number).sort((a, b) => a - b);
     total += (await stat(join("out", variants[widths.find((w) => w >= 1200) ?? widths.at(-1)]))).size;
   }
   assert.ok(total < 1_000_000, `Homepage image budget exceeded: ${total} bytes`);
   console.log(`Homepage imagery at 1200px variants: ${total} bytes (formerly 5,759,589 bytes).`);
+});
+
+test("brand concept stays separate from real project screens and navigation", async () => {
+  const home = await page("/");
+  assert.doesNotMatch(home, /Code editor preview|class="hero-note"|cta-architectural-blueprint-v3|hero-mountain-editorial-v2/);
+  assert.match(home, /Our five-phase process/);
+  assert.match(home, /Thoughtfully connected\. Built to evolve/);
+  const hero = home.match(/<section id="main-content"[\s\S]*?<\/section>/)?.[0];
+  assert.ok(hero, "Product hero is rendered");
+  assert.match(hero, /ICE TECH concept illustration/);
+  assert.match(hero, /Application \+ data/);
+  assert.doesNotMatch(hero, /99bitcoins|smoki|hse-training|href="\/projects\//i);
+  assert.doesNotMatch(hero, /<button\b|role="button"/);
+  for (const route of ["/", "/projects/"]) {
+    const html = await page(route);
+    for (const asset of ["project-smoki-homepage-screen", "project-smoki-avatar-screen", "project-99bitcoins-bitcoin"]) {
+      assert.ok(html.includes(asset), `${route}: missing product screenshot ${asset}`);
+    }
+    for (const slug of ["smoki-navijaj", "hse-training", "99bitcoins"]) {
+      assert.match(html, new RegExp(`href="/projects/${slug}/?"`));
+    }
+    assert.match(html, /HSE Training website layout preview/);
+  }
 });
 
 test("production-only assets and honest archived-project status", async () => {
