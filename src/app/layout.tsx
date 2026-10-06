@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Caveat, Sora } from "next/font/google";
+import { Sora } from "next/font/google";
 import { pageMetadata, siteUrl } from "./site";
 import SectionNavigation from "./SectionNavigation";
 import "./globals.css";
@@ -9,13 +9,6 @@ const sora = Sora({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-sora",
-});
-
-const caveat = Caveat({
-  subsets: ["latin"],
-  weight: ["400", "600"],
-  display: "swap",
-  variable: "--font-caveat",
 });
 
 export const metadata: Metadata = {
@@ -44,7 +37,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${sora.variable} ${caveat.variable}`}>
+    <html lang="en" className={sora.variable}>
       <body>
         <a className="skip-link" href="#main-content">Skip to content</a>
         {children}

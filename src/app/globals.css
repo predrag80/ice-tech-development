@@ -15,7 +15,7 @@
 * { box-sizing: border-box; }
 html { overflow-x: clip; scroll-behavior: smooth; }
 body { margin: 0; overflow-x: clip; color: var(--ink); background: var(--paper); font-family: var(--font); -webkit-font-smoothing: antialiased; }
-body::before { content: ""; position: fixed; inset: 0; z-index: 100; pointer-events: none; opacity: .31; background-image: radial-gradient(circle at 20% 30%, #6d83a31a 0 1px, transparent 1.3px), radial-gradient(circle at 78% 63%, #70829b12 0 1px, transparent 1.2px); background-size: 23px 27px, 31px 29px; mix-blend-mode: multiply; }
+body::before { content: none; }
 main { width: 100%; position: relative; overflow: hidden; background-image: repeating-linear-gradient(0deg, transparent 0 3px, rgb(60 84 112 / 1.2%) 4px); }
 main::before, main::after { content: none; }
 main::before { left: -13px; }

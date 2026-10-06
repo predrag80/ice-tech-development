@@ -1,11 +1,11 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, type ReactNode } from "react";
 
 const MAX_VERTICAL_OFFSET = 96;
 const MAX_HORIZONTAL_OFFSET = 32;
 
-export default function CtaParallax() {
+export default function CtaParallax({ children, className = "cta-parallax-lines" }: { children?: ReactNode; className?: string }) {
   const linesRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
@@ -42,5 +42,5 @@ export default function CtaParallax() {
     };
   }, []);
 
-  return <span ref={linesRef} className="cta-parallax-lines" aria-hidden="true" />;
+  return <span ref={linesRef} className={className} aria-hidden="true">{children}</span>;
 }

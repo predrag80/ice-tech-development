@@ -87,7 +87,7 @@
 .projectMeta i { color: var(--blue); font-size: 25px; font-style: normal; transition: transform 230ms ease; }
 .projectLink:hover .projectMeta i { transform: translate(5px, -5px); }
 .projectCard h2 { margin: 19px 0 0; font-size: clamp(29px, 2.5vw, 39px); font-weight: 630; letter-spacing: -.045em; }
-.projectCard > p { min-height: 48px; margin: 13px 0 0; color: var(--muted); font-size: clamp(12px, .88vw, 14px); line-height: 1.55; }
+.projectCard > p { min-height: 48px; margin: 13px 0 0; color: var(--muted); font-size: 16px; line-height: 1.65; }
 .cardFooter { margin-top: 26px; padding-top: 16px; display: flex; align-items: center; justify-content: space-between; gap: 20px; border-top: 1px solid #c8d7e5; }
 .cardFooter small { color: #6d84a0; font-size: clamp(8px, .61vw, 10px); text-transform: uppercase; letter-spacing: .08em; }
 .cardFooter b { color: #276fae; font-size: clamp(8px, .64vw, 10px); text-transform: uppercase; letter-spacing: .08em; }
