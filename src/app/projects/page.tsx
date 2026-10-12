@@ -30,7 +30,7 @@ export default function ProjectsPage() {
     <main className={styles.projectsPage} id="top">
       <SiteHeader active="work" />
 
-      <section id="main-content" tabIndex={-1} className={`${styles.intro} page-shell`}>
+      <section id="main-content" tabIndex={-1} className={`${styles.intro} page-shell`} data-intro>
         <div>
           <Link className={styles.backLink} href="/#work">← Back to projects</Link>
           <p>/ Selected work</p>
@@ -43,7 +43,7 @@ export default function ProjectsPage() {
       <section className={`${styles.projectGrid} page-shell`} aria-label="All projects">
         {projects.map((project) => (
           <Link className={styles.projectLink} href={`/projects/${project.slug}`} key={project.slug} aria-label={`View the ${project.name} project case study`}>
-            <article className={styles.projectCard}>
+            <article className={styles.projectCard} data-reveal>
               <ProjectCover type={project.visual} />
               <div className={styles.projectMeta}><span>{project.number} / {project.category}</span><i>↗</i></div>
               <h2>{project.name}</h2>
@@ -55,7 +55,7 @@ export default function ProjectsPage() {
       </section>
 
       <section className={styles.cta} id="contact">
-        <div className={`${styles.ctaInner} page-shell`}>
+        <div className={`${styles.ctaInner} page-shell`} data-reveal>
           <p>/ Start a conversation</p>
           <h2>Have a project<br />in mind?</h2>
           <div><span>Tell us about your goals and timeline by email.</span><a className="button" href="mailto:info@icetechdevelopment.com">Send us an email <b>→</b></a></div>

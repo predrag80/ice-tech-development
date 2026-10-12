@@ -86,6 +86,9 @@
   .footer { grid-template-columns: 1fr; gap: 28px; }.footer > div:last-child { justify-self: start; text-align: left; }
 }
 
+.serviceIcon svg { transition: translate 360ms cubic-bezier(.22, 1, .36, 1); }
+.service:hover .serviceIcon svg { translate: 0 -5px; }
+
 @media (prefers-reduced-motion: reduce) {
-  .backLink, .serviceCopy a b { transition: none; }
+  .backLink, .serviceCopy a b, .serviceIcon svg { transition: none; }
 }
