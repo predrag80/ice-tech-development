@@ -35,10 +35,10 @@ function ServiceIcon({ index }: { index: number }) {
     return (
       <svg className="service-icon" viewBox="0 0 160 96" aria-hidden="true">
         <rect className="service-icon-frame" x="5" y="7" width="150" height="82" rx="4" />
-        <path d="M5 22h150" />
+        <path pathLength={1} d="M5 22h150" />
         <circle cx="14" cy="14.5" r="1.6" /><circle cx="21" cy="14.5" r="1.6" /><circle cx="28" cy="14.5" r="1.6" />
-        <path className="service-icon-soft" d="M139 14.5h8M18 34h54v35H18zm0 42h22m6 0h26M84 34h53v43H84z" />
-        <path d="m105 43-10 10 10 10m14-20 10 10-10 10m-7-23-8 27" />
+        <path pathLength={1} className="service-icon-soft" d="M139 14.5h8M18 34h54v35H18zm0 42h22m6 0h26M84 34h53v43H84z" />
+        <path pathLength={1} d="m105 43-10 10 10 10m14-20 10 10-10 10m-7-23-8 27" />
       </svg>
     );
   }
@@ -49,8 +49,8 @@ function ServiceIcon({ index }: { index: number }) {
         <rect className="service-icon-frame" x="5" y="9" width="72" height="18" rx="4" />
         <rect className="service-icon-frame" x="5" y="36" width="72" height="18" rx="4" />
         <rect className="service-icon-frame" x="5" y="63" width="72" height="18" rx="4" />
-        <path className="service-icon-soft" d="M15 18h35m17 0h2M15 45h35m17 0h2M15 72h35m17 0h2M41 81v9m-15 0h30" />
-        <path d="M77 18h17v54H77m17-27h16" />
+        <path pathLength={1} className="service-icon-soft" d="M15 18h35m17 0h2M15 45h35m17 0h2M15 72h35m17 0h2M41 81v9m-15 0h30" />
+        <path pathLength={1} d="M77 18h17v54H77m17-27h16" />
         <rect className="service-icon-frame" x="110" y="25" width="45" height="19" rx="3" />
         <rect className="service-icon-frame" x="110" y="56" width="45" height="19" rx="3" />
       </svg>
@@ -60,11 +60,11 @@ function ServiceIcon({ index }: { index: number }) {
   return (
     <svg className="service-icon" viewBox="0 0 160 96" aria-hidden="true">
       <rect className="service-icon-frame" x="5" y="6" width="46" height="84" rx="7" />
-      <path className="service-icon-soft" d="M20 13h16m-10 69h5M51 48h19" />
+      <path pathLength={1} className="service-icon-soft" d="M20 13h16m-10 69h5M51 48h19" />
       <circle cx="28" cy="77" r="3" />
       <rect className="service-icon-frame" x="70" y="6" width="85" height="84" rx="4" />
-      <path className="service-icon-soft" d="M80 78h65M80 69h65" />
-      <path d="m82 61 17-17 13 10 27-31m0 0v15m0-15h-15" />
+      <path pathLength={1} className="service-icon-soft" d="M80 78h65M80 69h65" />
+      <path pathLength={1} d="m82 61 17-17 13 10 27-31m0 0v15m0-15h-15" />
     </svg>
   );
 }
@@ -108,22 +108,22 @@ export default function Home() {
       <ProductHero />
 
       <section className="section page-shell" id="services">
-        <div className="section-intro services-intro">
+        <div className="section-intro services-intro" data-reveal>
           <div><p className="kicker">/ Services</p><h2>What we do</h2></div>
           <p>We combine strategy, design and engineering to build digital products that create real value.</p>
           <Link className="line-link" href="/services">All services →</Link>
         </div>
         <div className="services-grid">
-          {services.map((service, index) => <article key={service.number}><div className="service-top"><span>{service.number}</span><span className="service-arrow" aria-hidden="true" /></div><div className="service-diagram"><ServiceIcon index={index} /><i /><i /><i /></div><h3>{service.title}</h3><p>{service.text}</p><ul className="service-tags" aria-label={`${service.title} technologies`}>{service.tags.map((tag) => <li key={tag}>{tag}</li>)}</ul></article>)}
+          {services.map((service, index) => <article key={service.number} data-reveal><div className="service-top"><span>{service.number}</span><span className="service-arrow" aria-hidden="true" /></div><div className="service-diagram"><ServiceIcon index={index} /><i /><i /><i /></div><h3>{service.title}</h3><p>{service.text}</p><ul className="service-tags" aria-label={`${service.title} technologies`}>{service.tags.map((tag) => <li key={tag}>{tag}</li>)}</ul></article>)}
         </div>
       </section>
 
       <section className="section projects-section" id="work">
         <div className="page-shell">
-          <div className="section-intro projects-intro"><div><p className="kicker">/ Featured work</p><h2>Selected projects</h2></div><p className="projects-proof">Different challenges.<br />Thoughtful engineering.</p><Link className="line-link" href="/projects">View all projects →</Link></div>
+          <div className="section-intro projects-intro" data-reveal><div><p className="kicker">/ Featured work</p><h2>Selected projects</h2></div><p className="projects-proof">Different challenges.<br />Thoughtful engineering.</p><Link className="line-link" href="/projects">View all projects →</Link></div>
           <div className="projects-grid">
             {projects.map((project) => (
-              <article className="project-card" key={project.slug}>
+              <article className="project-card" key={project.slug} data-reveal>
                 <Link className="project-thumb-link" href={`/projects/${project.slug}`} aria-label={`View the ${project.name} project case study`}>
                   <ProjectCover type={project.visual} />
                 </Link>
@@ -141,14 +141,14 @@ export default function Home() {
 
       <section className="section approach-section" id="approach">
         <div className="page-shell approach">
-          <div className="approach-copy"><p className="kicker">/ Our approach</p><h2>From idea<br />to impact.</h2><p>We work as a true partner — combining technical expertise with a deep understanding of business goals.</p><div className="approach-tags" aria-label="Our disciplines"><span>Strategy</span><span>Design</span><span>Engineering</span></div><Link className="outline-button" href="/process">Learn more about our process</Link></div>
-          <ol className={styles.process} aria-label="Our five-phase process">{processSteps.map(({ number, title, summary }) => <li key={number}><span>{number}</span><div><strong>{title}</strong><p>{summary}</p></div></li>)}</ol>
+          <div className="approach-copy" data-reveal><p className="kicker">/ Our approach</p><h2>From idea<br />to impact.</h2><p>We work as a true partner — combining technical expertise with a deep understanding of business goals.</p><div className="approach-tags" aria-label="Our disciplines"><span>Strategy</span><span>Design</span><span>Engineering</span></div><Link className="outline-button" href="/process">Learn more about our process</Link></div>
+          <ol className={styles.process} aria-label="Our five-phase process">{processSteps.map(({ number, title, summary }) => <li key={number} data-reveal="soft"><span>{number}</span><div><strong>{title}</strong><p>{summary}</p></div></li>)}</ol>
         </div>
       </section>
 
       <section className="technology page-shell">
-        <div className="technology-heading"><div><p className="kicker">/ Technology</p><h2>Built with<br />modern technology</h2></div><p>We choose the right tools for the problem, not because they&apos;re fashionable. The right technology helps us build better, faster and more reliable solutions.</p></div>
-        <div className="technology-row">{technologies.map((name) => <div key={name}><b><TechIcon name={name} /></b><span>{name}</span></div>)}</div>
+        <div className="technology-heading" data-reveal><div><p className="kicker">/ Technology</p><h2>Built with<br />modern technology</h2></div><p>We choose the right tools for the problem, not because they&apos;re fashionable. The right technology helps us build better, faster and more reliable solutions.</p></div>
+        <div className="technology-row">{technologies.map((name) => <div key={name} data-reveal="soft"><b><TechIcon name={name} /></b><span>{name}</span></div>)}</div>
       </section>
 
       <SoftwareContact />

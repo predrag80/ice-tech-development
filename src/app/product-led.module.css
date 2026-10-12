@@ -53,6 +53,8 @@
 .systemScene { position: relative; display: block; transform: translate3d(var(--cta-parallax-x, 0px), var(--cta-parallax-y, 0px), 0); }
 .systemScene svg { width: 100%; height: auto; display: block; overflow: visible; }
 .systemCaption { display: block; text-align: center; margin-top: 22px; color: #536f91; font-size: 11px; letter-spacing: .03em; }
+.systemHint { display: none; margin-top: 6px; color: #7a92ae; font-size: 10px; font-style: normal; }
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) { .systemHint { display: block; } }
 
 @media (max-width: 1100px) and (min-width: 761px) {
   .heroInner { column-gap: 4%; grid-template-columns: 1fr 1fr; }
@@ -90,6 +92,23 @@
   .systemScene { max-width: 550px; width: 100%; margin-inline: auto; }
   .systemCaption { margin-top: 8px; font-size: 10px; }
 }
+/* Entrance: copy rises in sequence while the background settles. Short delays keep the heading's paint early. */
+@keyframes heroRise { from { opacity: 0; translate: 0 22px; } to { opacity: 1; translate: 0 0; } }
+@keyframes heroSettle { from { scale: 1.06; } to { scale: 1; } }
+@keyframes eyebrowPulse { 0% { box-shadow: 0 0 0 0 rgb(44 131 246 / 45%); } 70%, 100% { box-shadow: 0 0 0 9px rgb(44 131 246 / 0%); } }
+.mountains { animation: heroSettle 2.6s cubic-bezier(.22, 1, .36, 1) both; }
+.heroCopy > * { animation: heroRise 900ms cubic-bezier(.22, 1, .36, 1) both; }
+.heroCopy > :nth-child(2) { animation-delay: 70ms; }
+.heroCopy h1 > span { display: inline-block; animation: heroRise 900ms 190ms cubic-bezier(.22, 1, .36, 1) both; }
+.heroCopy > :nth-child(3) { animation-delay: 260ms; }
+.heroCopy > :nth-child(4) { animation-delay: 340ms; }
+.heroCopy > :nth-child(5) { animation-delay: 420ms; }
+.heroFooter { animation: heroRise 900ms 520ms cubic-bezier(.22, 1, .36, 1) both; }
+.hero .eyebrow > span { animation: eyebrowPulse 2.8s 1.2s ease-out infinite; }
+.process li > span { transition: color 200ms ease, background 200ms ease, border-color 200ms ease; }
+.process li:hover > span { color: #fff; background: var(--blue); border-color: var(--blue); }
+
 @media (prefers-reduced-motion: reduce) {
   .systemScene { transform: none; }
+  .mountains, .heroCopy > *, .heroCopy h1 > span, .heroFooter, .hero .eyebrow > span { animation: none; }
 }

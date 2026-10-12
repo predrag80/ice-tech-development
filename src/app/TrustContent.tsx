@@ -4,12 +4,12 @@ import styles from "./trust-content.module.css";
 export function StudioIntro() {
   return (
     <section id="about" aria-labelledby="about-title" className={`${styles.about} page-shell`}>
-      <div>
+      <div data-reveal>
         <p className={styles.eyebrow}>/ Who we are</p>
         <h2 id="about-title">Development with<br />a clear purpose.</h2>
         <Link className="line-link" href="/projects/">Explore our work</Link>
       </div>
-      <div className={styles.aboutCopy}>
+      <div className={styles.aboutCopy} data-reveal>
         <p>ICE TECH DEVELOPMENT is a development team based in Belgrade, Serbia. We design and build websites, web applications and custom software for clients worldwide.</p>
         <p>Our work spans interactive fan experiences, corporate websites and content platforms with custom integrations. The selected projects show the features we developed and the technology behind them.</p>
         <dl className={styles.facts}>
@@ -56,7 +56,7 @@ const questions = [
 export function ProjectFaq() {
   return (
     <section id="project-faq" aria-labelledby="faq-title" className={`${styles.faq} page-shell`}>
-      <div className={styles.faqIntro}>
+      <div className={styles.faqIntro} data-reveal>
         <p className={styles.eyebrow}>/ Before we start</p>
         <h2 id="faq-title">A few useful<br />answers.</h2>
         <p className={styles.nextLabel}>After your email</p>
@@ -66,7 +66,7 @@ export function ProjectFaq() {
           <li><span aria-hidden="true">03</span><div><strong>Agree the next step</strong><p>We define the scope, estimate and delivery plan together.</p></div></li>
         </ol>
       </div>
-      <div className={styles.questions}>
+      <div className={styles.questions} data-reveal>
         {questions.map(({ question, answer }) => (
           <details key={question}>
             <summary>{question}<span className={styles.toggle} aria-hidden="true" /></summary>
