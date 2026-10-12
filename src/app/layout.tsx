@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import { Sora } from "next/font/google";
 import { pageMetadata, siteUrl } from "./site";
 import SectionNavigation from "./SectionNavigation";
+import ScrollReveal from "./ScrollReveal";
 import "./globals.css";
 import "./responsive.css";
+import "./motion.css";
 
 const sora = Sora({
   subsets: ["latin"],
@@ -42,6 +44,7 @@ export default function RootLayout({
         <a className="skip-link" href="#main-content">Skip to content</a>
         {children}
         <SectionNavigation />
+        <ScrollReveal />
       </body>
     </html>
   );

@@ -1,8 +1,41 @@
-.concept { width: 100%; max-width: 680px; margin: 0; justify-self: end; }
+.concept { width: 100%; max-width: 680px; margin: 0; justify-self: end; animation: conceptIn 1100ms 180ms cubic-bezier(.22, 1, .36, 1) both; }
 .label { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin: 0 4% 14px 2%; color: #4f6b8d; font-size: 10px; font-weight: 500; letter-spacing: .07em; }
 .label > span:last-child { color: #617d9d; font-size: 9px; letter-spacing: .04em; }
-.concept svg { display: block; width: 100%; height: auto; overflow: visible; }
+.concept svg { display: block; width: 100%; height: auto; overflow: visible; transform: perspective(1400px) rotateX(var(--concept-tilt-y, 0deg)) rotateY(var(--concept-tilt-x, 0deg)); }
 .concept figcaption { margin: 14px 0 0; padding-left: 2%; color: #5d7795; font-size: 11px; line-height: 1.6; }
 @media (min-width: 761px) { .concept { max-width: min(680px, calc((100svh - 300px) * 1.4167)); } }
 @media (max-width: 1100px) { .label { font-size: 9px; } .concept figcaption { font-size: 10px; } }
 @media (max-width: 760px) { .concept { max-width: 580px; align-self: center; } .label { margin-bottom: 12px; font-size: 9px; } .concept figcaption { margin-top: 6px; } }
+
+/* Ambient motion runs everywhere; the pointer-driven parallax and [data-active] details need a fine pointer. */
+@keyframes conceptIn { from { opacity: 0; translate: 0 18px; scale: .98; } to { opacity: 1; translate: 0 0; scale: 1; } }
+@keyframes stackIn { from { opacity: 0; translate: 0 -26px; } to { opacity: 1; translate: 0 0; } }
+@keyframes float { 0%, 100% { translate: 0 0; } 50% { translate: 0 -3px; } }
+@keyframes flow { to { stroke-dashoffset: -12; } }
+@keyframes pulse { to { stroke-dashoffset: 0; } }
+@keyframes status { 0%, 100% { opacity: 1; } 50% { opacity: .25; } }
+
+.float { animation: stackIn 900ms cubic-bezier(.22, 1, .36, 1) both, float 6s ease-in-out infinite; }
+[data-layer="stackBase"] .float { animation-delay: 450ms, 1.4s; }
+[data-layer="stackMiddle"] .float { animation-delay: 570ms, 1.9s; }
+[data-layer="stackTop"] .float { animation-delay: 690ms, 2.4s; }
+.flow { stroke-dasharray: 3 9; animation: flow 1.4s linear infinite; }
+.status { animation: status 2.4s ease-in-out infinite; }
+
+.chips rect { transition: fill 260ms ease, stroke 260ms ease, translate 420ms cubic-bezier(.22, 1, .36, 1); }
+.chips rect:nth-child(2) { transition-delay: 70ms; }
+.chips rect:nth-child(3) { transition-delay: 140ms; }
+.concept[data-active] .chips rect { fill: #d4e7ff; stroke: #8db9ef; translate: 0 -3px; }
+.workflowPulse { opacity: 0; stroke-dasharray: .18 1; stroke-dashoffset: 1.18; transition: opacity 240ms ease; }
+.concept[data-active] .workflowPulse { opacity: 1; animation: pulse 1.6s linear infinite; }
+.workflowNodes circle { transition: fill 240ms ease; }
+.workflowNodes circle:nth-child(2) { transition-delay: 90ms; }
+.workflowNodes circle:nth-child(3) { transition-delay: 180ms; }
+.concept[data-active] .workflowNodes circle { fill: #cfe3ff; }
+.appGlow { opacity: 0; transition: opacity 300ms ease; }
+.concept[data-active] .appGlow { opacity: .8; }
+
+@media (prefers-reduced-motion: reduce) {
+  .concept, .float, .flow, .status { animation: none; }
+  .concept svg { transform: none; }
+}
