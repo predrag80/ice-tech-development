@@ -212,7 +212,7 @@ export default function ProjectCaseStudy({ project }: { project: ProjectCaseStud
 
       <section id="main-content" tabIndex={-1} className={styles.hero}>
         <div className={`${styles.heroInner} page-shell`}>
-          <div className={styles.heroCopy}>
+          <div className={styles.heroCopy} data-intro>
             <Link className={styles.backLink} href="/projects">← Back to projects</Link>
             <p className={styles.eyebrow}>{project.index} / {project.category} / {project.projectType}</p>
             <h1>{project.name}<span>.</span></h1>
@@ -233,25 +233,25 @@ export default function ProjectCaseStudy({ project }: { project: ProjectCaseStud
       <section className={`${styles.overview} page-shell`}>
         <p className={styles.sectionLabel}>/ Project snapshot</p>
         <div className={styles.overviewGrid}>
-          <div className={styles.overviewTitle}><h2>{project.overviewTitle[0]}<br />{project.overviewTitle[1]}</h2><p>{project.overview}</p></div>
+          <div className={styles.overviewTitle} data-reveal><h2>{project.overviewTitle[0]}<br />{project.overviewTitle[1]}</h2><p>{project.overview}</p></div>
           <div className={styles.overviewCopy}>
-            <article><span>01</span><div><h3>The challenge</h3><p>{project.problem}</p></div></article>
-            <article><span>02</span><div><h3>Our contribution</h3><p>{project.contribution}</p></div></article>
-            <article><span>03</span><div><h3>The result</h3><p>{project.outcome}</p></div></article>
+            <article data-reveal><span>01</span><div><h3>The challenge</h3><p>{project.problem}</p></div></article>
+            <article data-reveal><span>02</span><div><h3>Our contribution</h3><p>{project.contribution}</p></div></article>
+            <article data-reveal><span>03</span><div><h3>The result</h3><p>{project.outcome}</p></div></article>
           </div>
-          <aside className={styles.scope}><p>Our scope</p><ul>{project.deliverables.map((item) => <li key={item}>{item}</li>)}</ul></aside>
+          <aside className={styles.scope} data-reveal><p>Our scope</p><ul>{project.deliverables.map((item) => <li key={item}>{item}</li>)}</ul></aside>
         </div>
       </section>
 
       <section className={styles.technology}>
         <div className={`${styles.technologyInner} page-shell`}>
-          <div className={styles.sectionHeading}><div><p className={styles.sectionLabel}>/ Technology</p><h2>Core stack.</h2></div><p>A focused technical foundation selected for performance, maintainability and growth.</p></div>
-          <div className={styles.techGrid}>{project.technologies.map(([name, description], index) => <article key={name}><span>{String(index + 1).padStart(2, "0")}</span><div><h3>{name}</h3><p>{description}</p></div></article>)}</div>
+          <div className={styles.sectionHeading} data-reveal><div><p className={styles.sectionLabel}>/ Technology</p><h2>Core stack.</h2></div><p>A focused technical foundation selected for performance, maintainability and growth.</p></div>
+          <div className={styles.techGrid}>{project.technologies.map(([name, description], index) => <article key={name} data-reveal="soft"><span>{String(index + 1).padStart(2, "0")}</span><div><h3>{name}</h3><p>{description}</p></div></article>)}</div>
         </div>
       </section>
 
       <section className={styles.projectCta} id="contact">
-        <div className={`${styles.projectCtaInner} page-shell`}>
+        <div className={`${styles.projectCtaInner} page-shell`} data-reveal>
           <p className={styles.sectionLabel}>/ Start a conversation</p>
           <h2>Have a project<br />with similar ambition?</h2>
           <p>Tell us about your goals, context and timeline by email.</p>

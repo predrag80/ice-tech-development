@@ -62,7 +62,7 @@ export default function ServicesPage() {
     <main className={styles.servicesPage} id="top">
       <SiteHeader active="services" />
 
-      <section id="main-content" tabIndex={-1} className={`${styles.intro} page-shell`}>
+      <section id="main-content" tabIndex={-1} className={`${styles.intro} page-shell`} data-intro>
         <div>
           <Link className={styles.backLink} href="/#services">← Back to services</Link>
           <p>/ Capabilities</p>
@@ -74,7 +74,7 @@ export default function ServicesPage() {
 
       <section className={`${styles.serviceList} page-shell`} aria-label="All services">
         {services.map((service, index) => (
-          <article className={styles.service} key={service.number}>
+          <article className={styles.service} key={service.number} data-reveal>
             <span className={styles.serviceNumber}>{service.number}</span>
             <div className={styles.serviceIcon}><ServiceIcon index={index} /></div>
             <div className={styles.serviceCopy}><h2>{service.title}</h2><p>{service.description}</p><a href="mailto:info@icetechdevelopment.com">Discuss a project <b>→</b></a></div>
@@ -85,13 +85,13 @@ export default function ServicesPage() {
 
       <section className={styles.processSection}>
         <div className={`${styles.processInner} page-shell`}>
-          <div className={styles.processHeading}><div><p>/ How we work</p><h2>From context<br />to launch.</h2></div><p>A focused process keeps business, design and engineering aligned from the first decision.</p></div>
-          <ol aria-label="Our five-phase process">{processSteps.map(({ number, title, summary }) => <li key={number}><span>{number}</span><div><h3>{title}</h3><p>{summary}</p></div></li>)}</ol>
+          <div className={styles.processHeading} data-reveal><div><p>/ How we work</p><h2>From context<br />to launch.</h2></div><p>A focused process keeps business, design and engineering aligned from the first decision.</p></div>
+          <ol aria-label="Our five-phase process">{processSteps.map(({ number, title, summary }) => <li key={number} data-reveal="soft"><span>{number}</span><div><h3>{title}</h3><p>{summary}</p></div></li>)}</ol>
         </div>
       </section>
 
       <section className={styles.cta} id="contact">
-        <div className={`${styles.ctaInner} page-shell`}>
+        <div className={`${styles.ctaInner} page-shell`} data-reveal>
           <p>/ Start a conversation</p>
           <h2>What can we build<br />together?</h2>
           <div><span>Tell us about your goals and timeline by email.</span><a className="button" href="mailto:info@icetechdevelopment.com">Send us an email <b>→</b></a></div>

@@ -62,7 +62,7 @@ export default function ProcessPage() {
 
       <section id="main-content" tabIndex={-1} className={styles.hero}>
         <div className={`${styles.heroInner} page-shell`}>
-          <div className={styles.heroCopy}>
+          <div className={styles.heroCopy} data-intro>
             <Link className={styles.backLink} href="/#approach">← Back to our approach</Link>
             <p>/ Our process</p>
             <h1>How ideas become<br /><span>products.</span></h1>
@@ -74,13 +74,13 @@ export default function ProcessPage() {
       </section>
 
       <section className={`${styles.principles} page-shell`}>
-        <div className={styles.sectionHeading}>
+        <div className={styles.sectionHeading} data-reveal>
           <div><p>/ Working principles</p><h2>Clear by design.<br />Flexible in practice.</h2></div>
           <p>Good product work needs structure, but every project has different risks. We keep the process focused and adapt the depth of each phase to the problem.</p>
         </div>
         <div className={styles.principleGrid}>
           {principles.map((principle) => (
-            <article key={principle.number}>
+            <article key={principle.number} data-reveal>
               <span>{principle.number}</span>
               <h3>{principle.title}</h3>
               <p>{principle.text}</p>
@@ -91,13 +91,13 @@ export default function ProcessPage() {
 
       <section className={styles.phasesSection}>
         <div className={`${styles.phasesInner} page-shell`}>
-          <div className={styles.phasesHeading}>
+          <div className={styles.phasesHeading} data-reveal>
             <div><p>/ From context to launch</p><h2>Five connected<br />phases.</h2></div>
             <p>We do not disappear behind a big reveal. Each phase creates useful evidence for the next one, and you stay close to the work throughout.</p>
           </div>
           <ol className={styles.phaseList}>
             {processSteps.map((phase) => (
-              <li key={phase.number}>
+              <li key={phase.number} data-reveal>
                 <div className={styles.phaseTitle}><span>{phase.number}</span><div><small>{phase.label}</small><h3>{phase.title}</h3></div></div>
                 <p>{phase.text}</p>
                 <div className={styles.outputs} aria-label={`${phase.title} outputs`}>{phase.outputs.map((output) => <span key={output}>{output}</span>)}</div>
@@ -108,16 +108,16 @@ export default function ProcessPage() {
       </section>
 
       <section className={`${styles.expectations} page-shell`}>
-        <div><p>/ What you can expect</p><h2>One team.<br />No black box.</h2></div>
+        <div data-reveal><p>/ What you can expect</p><h2>One team.<br />No black box.</h2></div>
         <div className={styles.expectationGrid}>
-          <article><strong>Weekly</strong><span>Working sessions and product reviews</span></article>
-          <article><strong>Early</strong><span>Prototypes and technical validation</span></article>
-          <article><strong>Always</strong><span>Transparent priorities and next steps</span></article>
+          <article data-reveal><strong>Weekly</strong><span>Working sessions and product reviews</span></article>
+          <article data-reveal><strong>Early</strong><span>Prototypes and technical validation</span></article>
+          <article data-reveal><strong>Always</strong><span>Transparent priorities and next steps</span></article>
         </div>
       </section>
 
       <section className={styles.cta} id="contact">
-        <div className={`${styles.ctaInner} page-shell`}>
+        <div className={`${styles.ctaInner} page-shell`} data-reveal>
           <p>/ Start with context</p>
           <h2>Tell us what you are<br />trying to change.</h2>
           <div><span>A useful first conversation starts with your goals, constraints and timeline.</span><a className="button" href="mailto:info@icetechdevelopment.com">Send us an email <b>→</b></a></div>
