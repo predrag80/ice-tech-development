@@ -34,7 +34,7 @@ for (const route of routes) {
     assert.match(html, /<summary aria-label="Navigation menu"><span class="mobile-menu-icon" aria-hidden="true">/);
     for (const image of html.matchAll(/<img\b[^>]*>/g)) {
       assert.match(image[0], /\balt="/);
-      assert.match(image[0], /\bsrcSet="/);
+      if (!/\bsrc="[^"]+\.svg"/.test(image[0])) assert.match(image[0], /\bsrcSet="/);
     }
     for (const match of html.matchAll(/\b(?:href|src)="([^"]+)"/g)) {
       const href = decode(match[1]);

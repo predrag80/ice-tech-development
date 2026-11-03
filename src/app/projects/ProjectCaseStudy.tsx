@@ -1,3 +1,4 @@
+import BrandLogo from "../BrandLogo";
 import SiteHeader from "../SiteHeader";
 import Link from "../StaticLink";
 import ScrollToTop from "../ScrollToTop";
@@ -116,23 +117,6 @@ export const projectCaseStudies = {
     nextHref: "/projects/smoki-navijaj",
   },
 } satisfies Record<string, ProjectCaseStudyData>;
-
-function MountainMark() {
-  return (
-    <svg className="mountain-mark" viewBox="0 0 72 52" aria-hidden="true">
-      <path fill="#73A9FA" d="M0 48 26.5 6 39 48H0Z" />
-      <path fill="#163965" d="M17 48 41 0l25 48H17Z" />
-      <path fill="#A9C8ED" d="m38 48 14-27 20 27H38Z" />
-      <path fill="#EEF6FF" d="m26.5 6 6.6 13.2-6.1-3.8-7.8 12.2L26.5 6Z" />
-      <path fill="#F8FBFF" d="m41 0 8.7 18.1-8-5-7.9 13.2L41 0Z" />
-      <path fill="#DCEBFA" d="m52 21 6.2 8.4-5.3-2.6-5.3 8.6L52 21Z" />
-    </svg>
-  );
-}
-
-function Brand() {
-  return <span className="brand"><MountainMark /><span>ICE TECH<small>DEVELOPMENT</small></span></span>;
-}
 
 const projectGalleries = {
   smoki: {
@@ -261,7 +245,7 @@ export default function ProjectCaseStudy({ project }: { project: ProjectCaseStud
       </section>
 
       <footer className={`${styles.footer} page-shell`}>
-        <div><Link href="/"><Brand /></Link><small>© 2026 ICE TECH DEVELOPMENT</small></div>
+        <div><Link href="/"><BrandLogo /></Link><small>© 2026 ICE TECH DEVELOPMENT</small></div>
         <Link className={styles.nextProject} href={project.nextHref}><span>Next project</span><strong>{project.nextProject}&nbsp; ↗</strong></Link>
         <div className={styles.footerContact}><span>Belgrade / Serbia<br />Working worldwide</span><a href="mailto:info@icetechdevelopment.com">info@icetechdevelopment.com</a></div>
       </footer>

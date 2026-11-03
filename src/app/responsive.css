@@ -8,8 +8,7 @@
 .not-found > p { max-width: 560px; line-height: 1.6; }
 .not-found > div { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 32px; }
 .site-header-inner { position: relative; left: auto; transform: none; }
-.site-header > a:first-child, .site-header .brand { width: auto; }
-.site-header .brand > span:last-child { width: auto; white-space: nowrap; }
+.site-header > a:first-child { width: auto; }
 .site-header { grid-template-columns: auto 1fr auto; gap: clamp(20px, 2.5vw, 48px); min-height: 72px; }
 .desktop-nav { gap: clamp(18px, 2vw, 38px); font-size: 15px; }
 .desktop-nav a { display: inline-flex; align-items: center; min-height: 44px; }

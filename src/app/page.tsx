@@ -1,3 +1,4 @@
+import BrandLogo from "./BrandLogo";
 import SiteHeader from "./SiteHeader";
 import Link from "./StaticLink";
 import ProductHero from "./ProductHero";
@@ -16,19 +17,6 @@ const services = [
 ];
 
 const technologies = ["React", "Next.js", "TypeScript", "PHP", "Laravel", "Node.js", "PostgreSQL", "MySQL", "Docker", "AWS", "Vercel"];
-
-function MountainMark() {
-  return (
-    <svg className="mountain-mark" viewBox="0 0 72 52" aria-hidden="true">
-      <path fill="#73A9FA" d="M0 48 26.5 6 39 48H0Z" />
-      <path fill="#163965" d="M17 48 41 0l25 48H17Z" />
-      <path fill="#A9C8ED" d="m38 48 14-27 20 27H38Z" />
-      <path fill="#EEF6FF" d="m26.5 6 6.6 13.2-6.1-3.8-7.8 12.2L26.5 6Z" />
-      <path fill="#F8FBFF" d="m41 0 8.7 18.1-8-5-7.9 13.2L41 0Z" />
-      <path fill="#DCEBFA" d="m52 21 6.2 8.4-5.3-2.6-5.3 8.6L52 21Z" />
-    </svg>
-  );
-}
 
 function ServiceIcon({ index }: { index: number }) {
   if (index === 0) {
@@ -82,10 +70,6 @@ function TechIcon({ name }: { name: string }) {
   if (name === "Docker") return <svg {...common}><path d="M5 27h37c-2 10-10 15-21 15S7 35 5 27Zm3-8h7v7H8zm8 0h7v7h-7zm8 0h7v7h-7zm-8-8h7v7h-7zm8 0h7v7h-7zm8 8h7v7h-7M38 22c3-5 6-4 8-3"/></svg>;
   if (name === "AWS") return <svg {...common}><text x="24" y="25" textAnchor="middle">aws</text><path d="M8 31c10 6 21 7 32 0m-4 0 4 0-2 4"/></svg>;
   return <svg {...common}><path d="M24 6 43 39H5L24 6Z" fill="currentColor" stroke="none"/></svg>;
-}
-
-function Brand() {
-  return <span className="brand"><MountainMark /><span>ICE TECH<small>DEVELOPMENT</small></span></span>;
 }
 
 function SocialIcon({ name }: { name: "linkedin" | "github" | "mail" }) {
@@ -156,7 +140,7 @@ export default function Home() {
       <ProjectFaq />
 
       <footer className="site-footer page-shell">
-        <div><a href="#top"><Brand /></a><small>© 2026 ICE TECH DEVELOPMENT. All rights reserved.</small></div>
+        <div><a href="#top"><BrandLogo /></a><small>© 2026 ICE TECH DEVELOPMENT. All rights reserved.</small></div>
         <nav><a href="#services">Services</a><a href="#work">Work</a><a href="#about">About</a><Link href="/process">Process</Link><a href="#contact">Contact</a></nav>
         <div className="footer-contact"><p>Belgrade / Serbia<br/>Working worldwide<a className="footer-email" href="mailto:info@icetechdevelopment.com">info@icetechdevelopment.com</a></p><div><a href="mailto:info@icetechdevelopment.com" aria-label="Email"><SocialIcon name="mail" /></a></div><small>Ideas / Engineering / Impact</small></div>
       </footer>
