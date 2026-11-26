@@ -101,6 +101,8 @@
 .liveLink::after { content: ""; height: 10px; position: absolute; right: -3px; bottom: -4px; left: -3px; background: url("/hero-link-underline.svg?v=3") center / 100% 100% no-repeat; transition: transform 180ms ease; transform-origin: left center; }
 .liveLink:hover::after { transform: scaleX(1.08); }
 .liveLink span { color: var(--blue); font-size: 16px; }
+.heroLinks { margin-top: 25px; display: flex; flex-wrap: wrap; gap: 14px 32px; }
+.heroLinks .liveLink { margin-top: 0; }
 
 .projectPreview {
   width: min(100%, 660px);
@@ -265,6 +267,8 @@
 .hseGallery .galleryViewport { background: #dfeaf1; }
 .bitcoinsGallery .galleryViewport { background: #f8eeee; }
 .bitcoinsGallery .gallerySlide img { object-position: left center !important; }
+.nwdGallery .galleryViewport { background: #f3f0ea; }
+.nwdGallery .gallerySlide img { object-position: center top !important; }
 
 .overview { padding-block: clamp(70px, 6vw, 96px); }
 .overviewGrid { margin-top: clamp(30px, 4vw, 58px); display: grid; grid-template-columns: 1.05fr 1.25fr .68fr; gap: clamp(38px, 5vw, 76px); align-items: start; }
@@ -279,6 +283,16 @@
 .scope > p { margin: 0 0 21px; color: var(--ink); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .15em; }
 .scope ul { margin: 0; padding: 0; display: grid; gap: 13px; color: #61758f; font-size: clamp(10px, .74vw, 13px); list-style: none; }
 .scope li::before { content: "/"; margin-right: 10px; color: var(--blue); }
+
+.results { margin-top: clamp(56px, 6vw, 88px); }
+.results dl { margin: clamp(20px, 2vw, 28px) 0 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 2px solid var(--blue); }
+.results dl > div { min-width: 0; padding: clamp(22px, 2.2vw, 32px) clamp(18px, 2vw, 30px) 0 0; display: flex; flex-direction: column-reverse; justify-content: flex-end; gap: 12px; }
+.results dl > div + div { padding-left: clamp(18px, 2vw, 30px); border-left: 1px solid #c9d8e7; }
+.results dd { margin: 0; color: var(--ink); font-size: clamp(44px, 4.6vw, 72px); font-weight: 620; line-height: .95; letter-spacing: -.055em; }
+.results dt { color: #61758f; font-size: clamp(10px, .74vw, 13px); font-weight: 650; text-transform: uppercase; letter-spacing: .12em; }
+.resultsSource { margin: 26px 0 0; color: var(--muted); font-size: 12px; }
+.resultsSource a { color: #276fae; font-weight: 650; }
+.resultsSource a:hover { color: var(--blue); }
 
 .sectionHeading { display: grid; grid-template-columns: 1fr minmax(280px, 36%); gap: clamp(40px, 8vw, 120px); align-items: end; }
 .sectionHeading h2 { margin-top: 17px; }
@@ -383,6 +397,8 @@
   .overviewCopy article { grid-template-columns: 33px 1fr; }
   .scope { padding-left: 0; grid-template-columns: 1fr; border-left: 0; }
   .scope ul { grid-template-columns: 1fr 1fr; }
+  .results dl { grid-template-columns: 1fr; }
+  .results dl > div + div { margin-top: 22px; padding-left: 0; border-left: 0; border-top: 1px solid #c9d8e7; }
   .techGrid { grid-template-columns: 1fr; }
   .techGrid article { min-height: 124px; }
   .projectCta::after { width: 95%; opacity: .14; }

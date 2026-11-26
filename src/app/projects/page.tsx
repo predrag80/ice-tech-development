@@ -7,7 +7,7 @@ import styles from "./projects.module.css";
 import ProjectCover from "./ProjectCover";
 import { projects, projectCount } from "./projectSummaries";
 
-export const metadata = pageMetadata("/projects", "Selected Projects | ICE TECH DEVELOPMENT", "A selection of web applications, software platforms and digital products designed and engineered by ICE TECH DEVELOPMENT.");
+export const metadata = pageMetadata("/projects", "Selected Projects | ICE TECH DEVELOPMENT", "Selected web applications, AI features and platform integrations delivered by ICE TECH DEVELOPMENT.");
 
 export default function ProjectsPage() {
   return (

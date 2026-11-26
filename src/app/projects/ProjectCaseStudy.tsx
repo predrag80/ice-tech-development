@@ -5,6 +5,11 @@ import ScrollToTop from "../ScrollToTop";
 import ProjectGallery from "./ProjectGallery";
 import styles from "./project.module.css";
 import { projectCount } from "./projectSummaries";
+import { showPlaceholders } from "../site";
+
+// `value: null` is a figure still to be supplied: marked in `next dev`, omitted in production.
+// Figures about a client's users or sales need the client's permission before they are published.
+type ProjectResult = { value: string | null; label: string };
 
 type ProjectCaseStudyData = {
   name: string;
@@ -24,7 +29,10 @@ type ProjectCaseStudyData = {
   outcome: string;
   deliverables: string[];
   technologies: [string, string][];
-  preview: "smoki" | "hse" | "bitcoins";
+  results: ProjectResult[];
+  resultsSource?: { label: string; href: string };
+  partner?: { label: string; name: string; href: string };
+  preview: "smoki" | "hse" | "bitcoins" | "nwd";
   nextProject: string;
   nextHref: string;
 };
@@ -36,7 +44,7 @@ export const projectCaseStudies = {
     category: "Interactive web application",
     tagline: "A high-energy fan platform that turns every match into a social, rewarding digital experience.",
     industry: "FMCG / Sports engagement",
-    expertise: "Product / UX / Full-stack development",
+    expertise: "Product / Full-stack / AI integration",
     platform: "Multilingual progressive web app",
     delivery: "Completed campaign · no longer available",
     projectType: "Archived campaign",
@@ -44,7 +52,7 @@ export const projectCaseStudies = {
     overview: "Smoki Navijaj connects football predictions, personalized fan avatars, leagues and rewards in one campaign platform.",
     problem: "The campaign needed one mobile-first experience for fan participation, personalized avatars and competition throughout a football tournament.",
     contribution: "We developed the fan application and its backend features: onboarding, AI-assisted avatar creation, match predictions, leagues and scoring, with multilingual delivery.",
-    outcome: "Fans could create an avatar, make predictions and follow their progress in the competition. The campaign is now archived and the application is no longer available.",
+    outcome: "Fans created avatars, made predictions and followed their league standings throughout the tournament. The campaign has ended and the application is no longer available.",
     deliverables: ["Product architecture", "Responsive PWA", "Competition engine", "AI avatar workflow"],
     technologies: [
       ["Next.js", "Fast multilingual fan experience"],
@@ -54,6 +62,13 @@ export const projectCaseStudies = {
       ["PostgreSQL / Prisma", "Users, matches, leagues and scoring"],
       ["Redis / S3", "Queues, caching and generated media"],
     ],
+    results: [
+      { value: "11", label: "Markets activated" },
+      { value: "16.1K", label: "Registered users" },
+      { value: "95.9%", label: "Participation rate" },
+    ],
+    resultsSource: { label: "Campaign results as reported by NWD Agency", href: "https://nwdagency.com/projects/smoki" },
+    partner: { label: "Delivered with", name: "NWD Agency", href: "https://nwdagency.com/projects/smoki" },
     preview: "smoki",
     nextProject: "HSE Training",
     nextHref: "/projects/hse-training",
@@ -61,27 +76,32 @@ export const projectCaseStudies = {
   "hse-training": {
     name: "HSE Training",
     index: "02",
-    category: "Corporate website",
-    tagline: "A clear, credible digital platform for internationally recognised safety training and consultancy.",
+    category: "Web platform & virtual agent",
+    tagline: "A clear, credible bilingual platform for internationally recognised safety training, with a virtual agent that guides visitors through courses and checkout.",
     industry: "Health, safety and education",
-    expertise: "Strategy / Web design / Development",
-    platform: "Bilingual content and commerce website",
+    expertise: "Strategy / Web development / Integrations",
+    platform: "Bilingual content and commerce platform",
     delivery: "Website delivery",
     projectType: "Live project",
     website: "https://hsetraining.rs",
     overviewTitle: ["Trust built", "into every page."],
     overview: "HSE Training brings courses, professional expertise, resources and online enquiries into one structured bilingual experience.",
     problem: "A broad training offer and specialist credentials needed a clearer structure for regional and international audiences.",
-    contribution: "We designed and developed the bilingual website, connected the Astro front end to WordPress content and integrated WooCommerce course checkout through APIs.",
-    outcome: "Visitors can explore courses and access the checkout journey in a structured bilingual website, while the content team manages publishing through the CMS.",
-    deliverables: ["Information architecture", "Responsive website", "Bilingual experience", "CMS and commerce integration"],
+    contribution: "We designed and developed the bilingual website, connected the Astro front end to WordPress content, integrated WooCommerce course checkout through APIs and added a virtual agent that guides visitors through the site and answers questions about courses, offers and payment.",
+    outcome: "Visitors can explore courses, get answers from the virtual agent and reach checkout in a structured bilingual website, while the content team manages publishing through the CMS.",
+    deliverables: ["Information architecture", "Bilingual website", "CMS and commerce integration", "Virtual agent"],
     technologies: [
       ["Astro", "Fast content-first front end"],
       ["TypeScript", "Maintainable interactive features"],
       ["WordPress", "Structured editorial CMS"],
-      ["WooCommerce", "Course checkout workflows"],
+      ["WooCommerce", "Course checkout and localized card payments"],
       ["REST APIs", "Front-end and CMS integration"],
-      ["Secure payments", "Localized card payment journey"],
+      ["Virtual agent", "Site guide for courses, offers and payment"],
+    ],
+    results: [
+      { value: "2", label: "Languages" },
+      { value: null, label: "Training courses online" }, // TODO
+      { value: null, label: "Virtual agent conversations" }, // TODO
     ],
     preview: "hse",
     nextProject: "99Bitcoins",
@@ -112,7 +132,47 @@ export const projectCaseStudies = {
       ["Custom plugins", "Crypto-specific publishing features"],
       ["Caching", "Efficient and reliable data delivery"],
     ],
+    results: [
+      { value: null, label: "External data sources" }, // TODO
+      { value: null, label: "Crypto assets tracked" }, // TODO
+      { value: null, label: "Data refresh interval" }, // TODO
+    ],
     preview: "bitcoins",
+    nextProject: "NWD Agency",
+    nextHref: "/projects/nwd-agency",
+  },
+  "nwd-agency": {
+    name: "NWD Agency",
+    index: "04",
+    category: "Agency website",
+    tagline: "A direct, structured website for a brand strategy agency: positioning, programs and case studies leading to one clear enquiry.",
+    industry: "Brand strategy and marketing",
+    expertise: "Front-end development / Interaction / Lead capture",
+    platform: "Next.js marketing website",
+    delivery: "Website delivery",
+    projectType: "Live project",
+    website: "https://nwdagency.com",
+    overviewTitle: ["Direction,", "made visible."],
+    overview: "The NWD Agency website presents the agency's positioning, seven brand growth programs, selected case studies and senior team, and closes with a structured enquiry form.",
+    problem: "The agency needed a website that explains a structured offer, seven programs within one brand growth system, as clearly as the strategy work it sells, and turns interest into qualified enquiries.",
+    // TODO: confirm the scope of our work on the site (development only, or design as well).
+    contribution: "We developed the website in Next.js: the programs overview with expandable details, the selected-work carousel, case-study pages with video, team profiles and an enquiry form that captures the challenge and the preferred type of engagement.",
+    outcome: "The agency presents its programs and work in one consistent site, and enquiries arrive with the context needed for a first conversation. We also work with NWD on campaign technology, including Smoki Navijaj.",
+    deliverables: ["Next.js development", "Programs and case-study pages", "Selected-work carousel", "Structured enquiry form"],
+    technologies: [
+      ["Next.js", "App framework and routing"],
+      ["React", "Interactive programs and carousel"],
+      ["Prerendering", "Pages served ready from cache"],
+      ["Cloudflare", "Edge delivery and protection"],
+      ["Video", "Case-study media in the page"],
+      ["Enquiry form", "Challenge and engagement captured up front"],
+    ],
+    results: [
+      { value: null, label: "Lighthouse performance score" }, // TODO
+      { value: null, label: "Largest Contentful Paint" }, // TODO
+      { value: null, label: "Enquiries through the form" }, // TODO: only with NWD's permission
+    ],
+    preview: "nwd",
     nextProject: "Smoki Navijaj",
     nextHref: "/projects/smoki-navijaj",
   },
@@ -146,6 +206,12 @@ const projectGalleries = {
     domain: "hsetraining.rs",
     label: "TRAINING / CONSULTANCY / COURSES",
     slides: [
+      {
+        src: "/project-hse-agent.jpg",
+        alt: "HSE Training website with the site assistant open, answering a question about buying a course and access",
+        caption: "Virtual agent: site guide",
+        objectPosition: "right center",
+      },
       {
         src: "/project-hse-training.webp",
         alt: "Practical workplace fire safety training",
@@ -187,7 +253,54 @@ const projectGalleries = {
       },
     ],
   },
+  nwd: {
+    domain: "nwdagency.com",
+    label: "STRATEGY / PROGRAMS / CASE STUDIES",
+    slides: [
+      {
+        src: "/project-nwd-home.jpg",
+        alt: "NWD Agency homepage with the headline Strategic clarity for growing brands",
+        caption: "Homepage",
+      },
+      {
+        src: "/project-nwd-programs.jpg",
+        alt: "NWD Agency programs section introducing seven programs designed to build modern brands",
+        caption: "Seven programs",
+      },
+      {
+        src: "/project-nwd-work.jpg",
+        alt: "NWD Agency selected work carousel with the Smoki, Marsh and Capone case studies",
+        caption: "Selected work",
+      },
+      {
+        src: "/project-nwd-case-study.jpg",
+        alt: "NWD Agency Smoki case study page titled Turning attention into participation",
+        caption: "Case study page",
+      },
+    ],
+  },
 } as const;
+
+function ProjectResults({ results, source }: { results: ProjectResult[]; source?: ProjectCaseStudyData["resultsSource"] }) {
+  const visible = results.filter((result) => result.value !== null || showPlaceholders);
+  // A single figure reads as an afterthought; the band appears once at least two are known.
+  if (visible.length < 2) return null;
+
+  return (
+    <div className={styles.results} data-reveal>
+      <p className={styles.sectionLabel}>/ Results</p>
+      <dl>
+        {visible.map(({ value, label }) => (
+          <div key={label}>
+            <dt>{label}</dt>
+            <dd className={value === null ? "placeholder-value" : undefined} title={value === null ? "Figure still to be supplied" : undefined}>{value ?? "—"}</dd>
+          </div>
+        ))}
+      </dl>
+      {source ? <p className={styles.resultsSource}>Source: <a href={source.href} target="_blank" rel="noreferrer">{source.label} <span aria-hidden="true">↗</span></a></p> : null}
+    </div>
+  );
+}
 
 export default function ProjectCaseStudy({ project }: { project: ProjectCaseStudyData }) {
   return (
@@ -207,7 +320,12 @@ export default function ProjectCaseStudy({ project }: { project: ProjectCaseStud
               <div><dt>Platform</dt><dd>{project.platform}</dd></div>
               <div><dt>Delivery</dt><dd>{project.delivery}</dd></div>
             </dl>
-            {project.website ? <a className={styles.liveLink} href={project.website} target="_blank" rel="noreferrer">Visit live website <span>↗</span></a> : null}
+            {project.website || project.partner ? (
+              <div className={styles.heroLinks}>
+                {project.website ? <a className={styles.liveLink} href={project.website} target="_blank" rel="noreferrer">Visit live website <span>↗</span></a> : null}
+                {project.partner ? <a className={styles.liveLink} href={project.partner.href} target="_blank" rel="noreferrer">{project.partner.label} {project.partner.name} <span>↗</span></a> : null}
+              </div>
+            ) : null}
           </div>
           <ProjectGallery tone={project.preview} {...projectGalleries[project.preview]} />
           <p className={styles.heroIndex}>{project.index}<br />/<br />{projectCount}</p>
@@ -225,6 +343,7 @@ export default function ProjectCaseStudy({ project }: { project: ProjectCaseStud
           </div>
           <aside className={styles.scope} data-reveal><p>Our scope</p><ul>{project.deliverables.map((item) => <li key={item}>{item}</li>)}</ul></aside>
         </div>
+        <ProjectResults results={project.results} source={project.resultsSource} />
       </section>
 
       <section className={styles.technology}>

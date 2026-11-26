@@ -3,6 +3,10 @@ import type { Metadata } from "next";
 export const siteUrl = "https://icetechdevelopment.com";
 export const siteName = "ICE TECH DEVELOPMENT";
 
+// Content values still to be supplied (prices, case-study figures) are marked as gaps
+// in `next dev` and left out of production builds.
+export const showPlaceholders = process.env.NODE_ENV === "development";
+
 export function pageMetadata(path: string, title: string, description: string): Metadata {
   const url = `${siteUrl}${path === "/" ? "/" : `${path.replace(/\/$/, "")}/`}`;
   const image = { url: "/social-card.jpg", width: 1200, height: 630, alt: siteName };

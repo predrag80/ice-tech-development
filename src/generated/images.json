@@ -86,6 +86,14 @@
     "768": "/media/project-hse-team-e33b9baee610-768.webp",
     "1166": "/media/project-hse-team-e33b9baee610-1166.webp"
   },
+  "/project-hse-agent.jpg": {
+    "240": "/media/project-hse-agent-7b1b673fa117-240.webp",
+    "320": "/media/project-hse-agent-7b1b673fa117-320.webp",
+    "480": "/media/project-hse-agent-7b1b673fa117-480.webp",
+    "768": "/media/project-hse-agent-7b1b673fa117-768.webp",
+    "1200": "/media/project-hse-agent-7b1b673fa117-1200.webp",
+    "1440": "/media/project-hse-agent-7b1b673fa117-1440.webp"
+  },
   "/project-99bitcoins-bitcoin.jpg": {
     "240": "/media/project-99bitcoins-bitcoin-6595eda47568-240.webp",
     "320": "/media/project-99bitcoins-bitcoin-6595eda47568-320.webp",
@@ -106,5 +114,33 @@
     "480": "/media/project-99bitcoins-indices-bee0b9e112aa-480.webp",
     "768": "/media/project-99bitcoins-indices-bee0b9e112aa-768.webp",
     "1200": "/media/project-99bitcoins-indices-bee0b9e112aa-1200.webp"
+  },
+  "/project-nwd-home.jpg": {
+    "240": "/media/project-nwd-home-817c88a27752-240.webp",
+    "320": "/media/project-nwd-home-817c88a27752-320.webp",
+    "480": "/media/project-nwd-home-817c88a27752-480.webp",
+    "768": "/media/project-nwd-home-817c88a27752-768.webp",
+    "1200": "/media/project-nwd-home-817c88a27752-1200.webp"
+  },
+  "/project-nwd-programs.jpg": {
+    "240": "/media/project-nwd-programs-547010c2d11e-240.webp",
+    "320": "/media/project-nwd-programs-547010c2d11e-320.webp",
+    "480": "/media/project-nwd-programs-547010c2d11e-480.webp",
+    "768": "/media/project-nwd-programs-547010c2d11e-768.webp",
+    "1200": "/media/project-nwd-programs-547010c2d11e-1200.webp"
+  },
+  "/project-nwd-work.jpg": {
+    "240": "/media/project-nwd-work-fe62c4f93c33-240.webp",
+    "320": "/media/project-nwd-work-fe62c4f93c33-320.webp",
+    "480": "/media/project-nwd-work-fe62c4f93c33-480.webp",
+    "768": "/media/project-nwd-work-fe62c4f93c33-768.webp",
+    "1200": "/media/project-nwd-work-fe62c4f93c33-1200.webp"
+  },
+  "/project-nwd-case-study.jpg": {
+    "240": "/media/project-nwd-case-study-92b6765f6c37-240.webp",
+    "320": "/media/project-nwd-case-study-92b6765f6c37-320.webp",
+    "480": "/media/project-nwd-case-study-92b6765f6c37-480.webp",
+    "768": "/media/project-nwd-case-study-92b6765f6c37-768.webp",
+    "1200": "/media/project-nwd-case-study-92b6765f6c37-1200.webp"
   }
 }

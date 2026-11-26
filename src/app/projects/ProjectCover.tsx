@@ -37,6 +37,19 @@ export default function ProjectCover({ type, className = "" }: { type: ProjectVi
     );
   }
 
+  if (type === "nwd") {
+    return (
+      <div className={`${styles.cover} ${styles.nwd} ${className}`}>
+        <span className={styles.label}>Direction, made visible.</span>
+        <div className={styles.browser}>
+          <BrowserBar domain="nwdagency.com" />
+          <div className={styles.siteViewport}><Image src="/project-nwd-home.jpg" alt="NWD Agency homepage with the headline Strategic clarity for growing brands" width={1200} height={700} sizes="(max-width: 620px) 86vw, (max-width: 1000px) 42vw, 28vw" /></div>
+          <div className={styles.integration}><span>Programs</span><i aria-hidden="true">→</i><span>Selected work</span><i aria-hidden="true">→</i><span>Enquiry</span></div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className={`${styles.cover} ${styles.bitcoins} ${className}`}>
       <span className={styles.label}>Market data, connected.</span>

@@ -32,6 +32,32 @@
 .serviceCopy a { margin-top: 27px; display: inline-flex; align-items: center; gap: 12px; color: #276fae; font-size: clamp(9px, .67vw, 11px); font-weight: 700; text-transform: uppercase; letter-spacing: .09em; }.serviceCopy a b { font-size: 16px; font-weight: 400; transition: transform 180ms ease; }.serviceCopy a:hover b { transform: translateX(4px); }
 .service ul { margin: 0; padding: 22px 0 0; display: grid; gap: 15px; border-top: 2px solid var(--blue); color: #617791; font-size: clamp(10px, .75vw, 13px); list-style: none; }.service li::before { content: "/"; margin-right: 11px; color: var(--blue); }
 
+.serviceCopy .proof { margin-top: 24px; display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px 20px; color: var(--ink); font-size: clamp(12px, .86vw, 14px); }
+.proof > span { color: #6b84a2; font-size: clamp(8px, .61vw, 10px); font-weight: 700; text-transform: uppercase; letter-spacing: .17em; }
+.serviceCopy .proof a { margin: 0; display: inline-flex; gap: 6px; padding-bottom: 3px; border-bottom: 1px solid #a9c9ef; color: var(--ink); font-size: inherit; font-weight: 620; text-transform: none; letter-spacing: 0; transition: border-color 180ms ease, color 180ms ease; }
+.serviceCopy .proof a b { color: var(--blue); font-size: inherit; }
+.serviceCopy .proof a:hover { border-color: var(--blue); color: var(--blue); }
+.serviceCopy .proof a:hover b { transform: translate(2px, -2px); }
+
+.offers { padding-bottom: clamp(86px, 7vw, 112px); }
+.offersHeading { display: grid; grid-template-columns: 1fr minmax(300px, 38%); gap: clamp(45px, 8vw, 120px); align-items: end; }
+.offersHeading > div > p { margin: 0; color: #617b9d; font-size: clamp(8px, .61vw, 10px); font-weight: 700; text-transform: uppercase; letter-spacing: .19em; }
+.offersHeading h2 { margin: 18px 0 0; font-size: clamp(42px, 4.4vw, 64px); font-weight: 620; line-height: .96; letter-spacing: -.055em; }
+.offersHeading > p { margin: 0 0 4px; color: var(--muted); font-size: clamp(12px, .92vw, 15px); line-height: 1.65; }
+.offerGrid { margin: clamp(48px, 5vw, 72px) 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 2px solid var(--blue); border-left: 1px solid #c8d8e7; list-style: none; }
+.offer { min-width: 0; padding: clamp(24px, 2.4vw, 36px); display: flex; flex-direction: column; border-right: 1px solid #c8d8e7; border-bottom: 1px solid #c8d8e7; background: rgb(255 255 255 / 42%); transition: background 200ms ease; }
+.offer:hover { background: rgb(255 255 255 / 72%); }
+.offerMeta { color: #276fae; font-size: clamp(8px, .61vw, 10px); font-weight: 700; text-transform: uppercase; letter-spacing: .15em; }
+.offer h3 { margin: 22px 0 0; font-size: clamp(26px, 2.2vw, 34px); font-weight: 620; line-height: 1; letter-spacing: -.045em; }
+.offer > p { margin: 16px 0 0; color: var(--muted); font-size: clamp(12px, .9vw, 15px); line-height: 1.6; }
+.offer ul { margin: 24px 0 0; padding: 18px 0 0; display: grid; gap: 11px; border-top: 1px solid #c8d8e7; color: #617791; font-size: clamp(10px, .75vw, 13px); list-style: none; }
+.offer ul li::before { content: "/"; margin-right: 11px; color: var(--blue); }
+.offerFooter { margin-top: auto; padding-top: 30px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px 20px; }
+.offerFooter strong { color: var(--ink); font-size: clamp(24px, 2vw, 30px); font-weight: 600; letter-spacing: -.04em; }
+.offerFooter a { display: inline-flex; align-items: center; gap: 10px; color: #276fae; font-size: clamp(9px, .67vw, 11px); font-weight: 700; text-transform: uppercase; letter-spacing: .09em; }
+.offerFooter a b { font-size: 16px; font-weight: 400; transition: transform 180ms ease; }
+.offerFooter a:hover b { transform: translateX(4px); }
+
 .processSection { position: relative; overflow: hidden; border-block: 1px solid #173653; color: #edf6ff; background: #07192c; }
 .processSection::before { content: ""; position: absolute; inset: 0; opacity: .28; background: url("/cta-architectural-overlay.svg") 75% center / cover no-repeat; }
 .processInner { padding-block: clamp(78px, 6.8vw, 104px); position: relative; z-index: 1; }
@@ -53,6 +79,8 @@
 @media (max-width: 980px) {
   .service { grid-template-columns: 58px 180px 1fr; }.service ul { grid-column: 2 / -1; grid-template-columns: repeat(2, 1fr); }
   .processInner ol { grid-template-columns: repeat(2, 1fr); }
+  .offersHeading { grid-template-columns: 1fr; gap: 26px; }
+  .offerGrid { grid-template-columns: 1fr; }
 }
 
 @media (min-width: 1200px) {
@@ -80,7 +108,7 @@
 @media (max-width: 620px) {
   .header { height: 68px; }
   .intro { min-height: auto; padding-block: 66px; grid-template-columns: 1fr; gap: 30px; }.intro::after { width: 110%; right: -55%; }.intro h1 { font-size: 54px; }.intro > p { font-size: 13px; }
-  .serviceList { padding-bottom: 72px; }.service { padding-block: 46px; grid-template-columns: 48px 1fr; gap: 26px 20px; }.serviceIcon { min-height: 118px; }.serviceIcon svg { width: 160px; }.serviceCopy { grid-column: 1 / -1; }.serviceCopy h2 { font-size: 32px; }.service ul { grid-column: 1 / -1; grid-template-columns: 1fr; }
+  .serviceList, .offers { padding-bottom: 72px; }.offersHeading h2 { font-size: 42px; }.service { padding-block: 46px; grid-template-columns: 48px 1fr; gap: 26px 20px; }.serviceIcon { min-height: 118px; }.serviceIcon svg { width: 160px; }.serviceCopy { grid-column: 1 / -1; }.serviceCopy h2 { font-size: 32px; }.service ul { grid-column: 1 / -1; grid-template-columns: 1fr; }
   .processInner { padding-block: 68px; }.processHeading h2 { font-size: 42px; }.processInner ol { grid-template-columns: 1fr; }.processInner li { min-height: 130px; }
   .ctaInner { min-height: 480px; padding-top: 72px; }.cta h2 { font-size: 42px; }.ctaInner > div { align-items: flex-start; flex-direction: column; gap: 26px; }
   .footer { grid-template-columns: 1fr; gap: 28px; }.footer > div:last-child { justify-self: start; text-align: left; }
@@ -90,5 +118,5 @@
 .service:hover .serviceIcon svg { translate: 0 -5px; }
 
 @media (prefers-reduced-motion: reduce) {
-  .backLink, .serviceCopy a b, .serviceIcon svg { transition: none; }
+  .backLink, .serviceCopy a b, .serviceIcon svg, .offerFooter a b { transition: none; }
 }

@@ -59,7 +59,7 @@
 .intro > strong { padding-left: 18px; border-left: 2px solid var(--blue); color: #4f6f96; font-size: clamp(26px, 2.4vw, 38px); font-weight: 400; line-height: 1; }
 .intro > strong small { display: block; margin-top: 8px; font-size: 8px; font-weight: 700; text-transform: uppercase; letter-spacing: .15em; }
 
-.projectGrid { padding-bottom: clamp(90px, 8vw, 126px); display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(24px, 2.8vw, 42px); }
+.projectGrid { padding-bottom: clamp(90px, 8vw, 126px); display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(48px, 4.5vw, 72px) clamp(28px, 3.4vw, 56px); }
 .projectLink { min-width: 0; display: block; }
 .projectLink:focus-visible { outline: 2px solid var(--blue); outline-offset: 5px; }
 .projectCard { min-width: 0; }

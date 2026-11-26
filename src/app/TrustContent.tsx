@@ -10,12 +10,12 @@ export function StudioIntro() {
         <Link className="line-link" href="/projects/">Explore our work</Link>
       </div>
       <div className={styles.aboutCopy} data-reveal>
-        <p>ICE TECH DEVELOPMENT is a development team based in Belgrade, Serbia. We design and build websites, web applications and custom software for clients worldwide.</p>
-        <p>Our work spans interactive fan experiences, corporate websites and content platforms with custom integrations. The selected projects show the features we developed and the technology behind them.</p>
+        <p>ICE TECH DEVELOPMENT is a development team based in Belgrade, Serbia. We build web applications, AI features and platform integrations for clients worldwide.</p>
+        <p>Our work spans a virtual agent for a training platform, an interactive fan experience, an agency website and a content platform with custom data integrations. The selected projects show the features we developed and the technology behind them.</p>
         <dl className={styles.facts}>
           <div><dt>Based in</dt><dd>Belgrade, Serbia</dd></div>
           <div><dt>Working with</dt><dd>Clients worldwide</dd></div>
-          <div><dt>Focus</dt><dd>Web, software &amp; integrations</dd></div>
+          <div><dt>Focus</dt><dd>Web apps, AI &amp; integrations</dd></div>
         </dl>
       </div>
     </section>
@@ -33,11 +33,11 @@ const questions = [
   },
   {
     question: "How are the price and timeline defined?",
-    answer: "They depend on the scope, integrations, available content and technical requirements. We review these together and agree the deliverables, estimate and delivery plan before starting the work. There is no one-size-fits-all package.",
+    answer: "Most projects start with a fixed-price Scope Sprint of one to two weeks. It ends with a prioritised scope, a technical direction and an estimate, so the price and timeline of the build are agreed before it starts. For AI ideas or an existing platform, a fixed-price AI Audit or Platform Audit is the first step.",
   },
   {
     question: "Can we discuss an existing website or application?",
-    answer: "Yes—share a link and describe what needs to change. Our work includes custom plugins and API integrations for existing platforms. The first step is to understand the current setup and assess the proposed work.",
+    answer: "Yes—share a link and describe what needs to change. Our work includes custom plugins, headless front ends and API integrations for existing platforms. A one-week Platform Audit is a good first step when the current setup needs assessing.",
   },
   {
     question: "Can we work together remotely?",

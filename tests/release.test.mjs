@@ -7,7 +7,7 @@ import { previewServer } from "../scripts/preview.mjs";
 import sharp from "sharp";
 
 const origin = "https://icetechdevelopment.com";
-const routes = ["/", "/services/", "/projects/", "/process/", "/projects/smoki-navijaj/", "/projects/hse-training/", "/projects/99bitcoins/"];
+const routes = ["/", "/services/", "/projects/", "/process/", "/projects/smoki-navijaj/", "/projects/hse-training/", "/projects/99bitcoins/", "/projects/nwd-agency/"];
 const page = (route) => readFile(join("out", route, "index.html"), "utf8");
 const decode = (value) => value.replaceAll("&amp;", "&");
 
@@ -58,7 +58,7 @@ for (const route of routes) {
   });
 }
 
-test("SEO discovery contains only the seven real routes", async () => {
+test("SEO discovery contains only the real routes", async () => {
   const xml = await readFile("out/sitemap.xml", "utf8");
   const urls = [...xml.matchAll(/<loc>(.*?)<\/loc>/g)].map((m) => m[1]);
   assert.deepEqual(urls.sort(), routes.map((r) => origin + r).sort());
@@ -126,6 +126,19 @@ test("each case study distinguishes contribution, scope and result", async () =>
     assert.match(html, /<p>Our scope<\/p>/);
   }
   assert.match(await page("/projects/99bitcoins/"), /Our work focused on custom WordPress plugins/);
+});
+
+test("services cite case studies as proof; unfilled figures never reach production", async () => {
+  const services = await page("/services/");
+  assert.match(services, /<span>Proof<\/span>/);
+  for (const slug of ["hse-training", "smoki-navijaj", "99bitcoins", "nwd-agency"]) {
+    assert.match(services, new RegExp(`href="/projects/${slug}/?"`));
+  }
+  assert.match(services, /Scope Sprint/);
+  for (const route of routes) assert.doesNotMatch(await page(route), /placeholder-value|Figure still to be supplied|Price still to be set/, route);
+  const smoki = await page("/projects/smoki-navijaj/");
+  assert.match(smoki, /href="https:\/\/nwdagency\.com\/projects\/smoki"/);
+  assert.match(smoki, /16\.1K/);
 });
 
 test("all exported inline scripts are CSP-hashed; no third-party capture script", async () => {
