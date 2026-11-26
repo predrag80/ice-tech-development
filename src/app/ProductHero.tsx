@@ -8,9 +8,9 @@ export default function ProductHero() {
       <Image className={styles.mountains} src="/hero-blue-clouds-v2.webp" alt="" width={1860} height={846} sizes="100vw" loading="eager" />
       <div className={`page-shell ${styles.heroInner}`}>
         <div className={styles.heroCopy}>
-          <p className={styles.eyebrow}><span /> AI & web development</p>
+          <p className={styles.eyebrow}><span /> Web & AI development</p>
           <h1>Ideas.<br /><span>Engineered.</span></h1>
-          <p className={styles.lead}>We build AI-powered web applications and connect them to the platforms your business already runs on.</p>
+          <p className={styles.lead}>We build web applications, connect them to the platforms your business already runs on, and add AI where it does real work.</p>
           <div className={styles.actions}>
             <a className="button" href="mailto:info@icetechdevelopment.com">Start a project <span aria-hidden="true">→</span></a>
             <a className={`line-link ${styles.drawnLink}`} href="#work">See our work</a>

@@ -139,6 +139,9 @@ test("services cite case studies as proof; unfilled figures never reach producti
   const smoki = await page("/projects/smoki-navijaj/");
   assert.match(smoki, /href="https:\/\/nwdagency\.com\/projects\/smoki"/);
   assert.match(smoki, /16\.1K/);
+  const bitcoins = await page("/projects/99bitcoins/");
+  assert.match(bitcoins, /Platform scale/);
+  assert.match(bitcoins, /Top 5/);
 });
 
 test("all exported inline scripts are CSP-hashed; no third-party capture script", async () => {
