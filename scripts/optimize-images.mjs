@@ -8,8 +8,9 @@ export const imageSources = [
   "hero-blue-clouds-v2.webp", "hero-mountain-editorial-v2.png", "cta-architectural-blueprint-v3.png",
   "project-smoki-cover.jpg", "project-hse-hero.webp", "project-99bitcoins-cover.png",
   "project-smoki-homepage-screen.webp", "project-smoki-avatar-screen.webp", "project-smoki-cheering-screen.webp",
-  "project-hse-training.webp", "project-hse-coaching.webp", "project-hse-team.webp",
+  "project-hse-training.webp", "project-hse-coaching.webp", "project-hse-team.webp", "project-hse-agent.jpg",
   "project-99bitcoins-bitcoin.jpg", "project-99bitcoins-dex.jpg", "project-99bitcoins-indices.jpg",
+  "project-nwd-home.jpg", "project-nwd-programs.jpg", "project-nwd-work.jpg", "project-nwd-case-study.jpg",
 ];
 
 await mkdir("public/media", { recursive: true });

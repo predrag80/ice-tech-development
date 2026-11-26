@@ -8,51 +8,47 @@ import ScrollToTop from "./ScrollToTop";
 import ProjectCover from "./projects/ProjectCover";
 import { projects } from "./projects/projectSummaries";
 import { processSteps } from "./processSteps";
+import { services, type ServiceIconKind } from "./serviceOfferings";
 import { StudioIntro, ProjectFaq } from "./TrustContent";
-
-const services = [
-  { number: "01", title: "Web Development", text: "High-performance websites and web applications built with modern technologies.", tags: ["React", "Next.js", "WordPress", "APIs"] },
-  { number: "02", title: "Software Development", text: "Custom software designed around your business requirements.", tags: ["Architecture", "Backend", "Databases", "APIs"] },
-  { number: "03", title: "Digital Products", text: "From an idea to a production-ready digital product.", tags: ["Strategy", "UX", "Development", "Deployment"] },
-];
 
 const technologies = ["React", "Next.js", "TypeScript", "PHP", "Laravel", "Node.js", "PostgreSQL", "MySQL", "Docker", "AWS", "Vercel"];
 
-function ServiceIcon({ index }: { index: number }) {
-  if (index === 0) {
+function ServiceIcon({ kind }: { kind: ServiceIconKind }) {
+  if (kind === "ai") {
     return (
       <svg className="service-icon" viewBox="0 0 160 96" aria-hidden="true">
-        <rect className="service-icon-frame" x="5" y="7" width="150" height="82" rx="4" />
-        <path pathLength={1} d="M5 22h150" />
-        <circle cx="14" cy="14.5" r="1.6" /><circle cx="21" cy="14.5" r="1.6" /><circle cx="28" cy="14.5" r="1.6" />
-        <path pathLength={1} className="service-icon-soft" d="M139 14.5h8M18 34h54v35H18zm0 42h22m6 0h26M84 34h53v43H84z" />
-        <path pathLength={1} d="m105 43-10 10 10 10m14-20 10 10-10 10m-7-23-8 27" />
+        <rect className="service-icon-frame" x="5" y="9" width="76" height="56" rx="6" />
+        <path pathLength={1} className="service-icon-soft" d="M17 24h38M17 35h50M17 46h26M20 65v15l15-15" />
+        <path pathLength={1} d="M81 37h18" />
+        <circle className="service-icon-frame" cx="126" cy="37" r="26" />
+        <path pathLength={1} d="M126 20c2 11 6 15 17 17-11 2-15 6-17 17-2-11-6-15-17-17 11-2 15-6 17-17Z" />
+        <path pathLength={1} className="service-icon-soft" d="M150 72c1 4 2 6 6 7-4 1-5 3-6 7-1-4-2-6-6-7 4-1 5-3 6-7Z" />
       </svg>
     );
   }
 
-  if (index === 1) {
+  if (kind === "apps") {
     return (
       <svg className="service-icon" viewBox="0 0 160 96" aria-hidden="true">
-        <rect className="service-icon-frame" x="5" y="9" width="72" height="18" rx="4" />
-        <rect className="service-icon-frame" x="5" y="36" width="72" height="18" rx="4" />
-        <rect className="service-icon-frame" x="5" y="63" width="72" height="18" rx="4" />
-        <path pathLength={1} className="service-icon-soft" d="M15 18h35m17 0h2M15 45h35m17 0h2M15 72h35m17 0h2M41 81v9m-15 0h30" />
-        <path pathLength={1} d="M77 18h17v54H77m17-27h16" />
-        <rect className="service-icon-frame" x="110" y="25" width="45" height="19" rx="3" />
-        <rect className="service-icon-frame" x="110" y="56" width="45" height="19" rx="3" />
+        <rect className="service-icon-frame" x="5" y="6" width="46" height="84" rx="7" />
+        <path pathLength={1} className="service-icon-soft" d="M20 13h16m-10 69h5M51 48h19" />
+        <circle cx="28" cy="77" r="3" />
+        <rect className="service-icon-frame" x="70" y="6" width="85" height="84" rx="4" />
+        <path pathLength={1} className="service-icon-soft" d="M80 78h65M80 69h65" />
+        <path pathLength={1} d="m82 61 17-17 13 10 27-31m0 0v15m0-15h-15" />
       </svg>
     );
   }
 
   return (
     <svg className="service-icon" viewBox="0 0 160 96" aria-hidden="true">
-      <rect className="service-icon-frame" x="5" y="6" width="46" height="84" rx="7" />
-      <path pathLength={1} className="service-icon-soft" d="M20 13h16m-10 69h5M51 48h19" />
-      <circle cx="28" cy="77" r="3" />
-      <rect className="service-icon-frame" x="70" y="6" width="85" height="84" rx="4" />
-      <path pathLength={1} className="service-icon-soft" d="M80 78h65M80 69h65" />
-      <path pathLength={1} d="m82 61 17-17 13 10 27-31m0 0v15m0-15h-15" />
+      <rect className="service-icon-frame" x="5" y="9" width="72" height="18" rx="4" />
+      <rect className="service-icon-frame" x="5" y="36" width="72" height="18" rx="4" />
+      <rect className="service-icon-frame" x="5" y="63" width="72" height="18" rx="4" />
+      <path pathLength={1} className="service-icon-soft" d="M15 18h35m17 0h2M15 45h35m17 0h2M15 72h35m17 0h2M41 81v9m-15 0h30" />
+      <path pathLength={1} d="M77 18h17v54H77m17-27h16" />
+      <rect className="service-icon-frame" x="110" y="25" width="45" height="19" rx="3" />
+      <rect className="service-icon-frame" x="110" y="56" width="45" height="19" rx="3" />
     </svg>
   );
 }
@@ -94,11 +90,11 @@ export default function Home() {
       <section className="section page-shell" id="services">
         <div className="section-intro services-intro" data-reveal>
           <div><p className="kicker">/ Services</p><h2>What we do</h2></div>
-          <p>We combine strategy, design and engineering to build digital products that create real value.</p>
+          <p>Web applications, AI features and platform integrations, each one backed by work we have delivered.</p>
           <Link className="line-link" href="/services">All services →</Link>
         </div>
         <div className="services-grid">
-          {services.map((service, index) => <article key={service.number} data-reveal><div className="service-top"><span>{service.number}</span><span className="service-arrow" aria-hidden="true" /></div><div className="service-diagram"><ServiceIcon index={index} /><i /><i /><i /></div><h3>{service.title}</h3><p>{service.text}</p><ul className="service-tags" aria-label={`${service.title} technologies`}>{service.tags.map((tag) => <li key={tag}>{tag}</li>)}</ul></article>)}
+          {services.map((service) => <article key={service.number} data-reveal><div className="service-top"><span>{service.number}</span><span className="service-arrow" aria-hidden="true" /></div><div className="service-diagram"><ServiceIcon kind={service.icon} /><i /><i /><i /></div><h3>{service.title}</h3><p>{service.summary}</p><ul className="service-tags" aria-label={`${service.title} capabilities`}>{service.tags.map((tag) => <li key={tag}>{tag}</li>)}</ul></article>)}
         </div>
       </section>
 
@@ -106,7 +102,7 @@ export default function Home() {
         <div className="page-shell">
           <div className="section-intro projects-intro" data-reveal><div><p className="kicker">/ Featured work</p><h2>Selected projects</h2></div><p className="projects-proof">Different challenges.<br />Thoughtful engineering.</p><Link className="line-link" href="/projects">View all projects →</Link></div>
           <div className="projects-grid">
-            {projects.map((project) => (
+            {projects.filter((project) => project.featured).map((project) => (
               <article className="project-card" key={project.slug} data-reveal>
                 <Link className="project-thumb-link" href={`/projects/${project.slug}`} aria-label={`View the ${project.name} project case study`}>
                   <ProjectCover type={project.visual} />

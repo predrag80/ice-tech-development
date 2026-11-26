@@ -24,6 +24,10 @@
 .hseIntro > small { font-size: 1.8cqw; margin-top: 4%; }
 .hseCourses { display: flex; justify-content: space-between; gap: 5%; padding: 5%; color: #526982; font-size: 1.8cqw; }
 .bitcoins { background: #e5eaf5; }
+.nwd { background: #f1eee8; border-color: #e2ddd3; }
+.nwd .label { color: #6d5d4c; }
+.siteViewport { aspect-ratio: 2 / 1; overflow: hidden; }
+.siteViewport img { display: block; width: 100%; height: auto; }
 .marketViewport { aspect-ratio: 2 / 1; overflow: hidden; }
 .market { display: block; width: 100%; height: auto; transform: translateY(-3%); }
 .integration { display: flex; align-items: center; justify-content: space-between; gap: 4%; padding: 5%; color: #566783; border-top: 1px solid #e3e8f0; font-size: 1.8cqw; }

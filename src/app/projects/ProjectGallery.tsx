@@ -14,7 +14,7 @@ export type ProjectGallerySlide = {
 type ProjectGalleryProps = {
   domain: string;
   label: string;
-  tone: "smoki" | "hse" | "bitcoins";
+  tone: "smoki" | "hse" | "bitcoins" | "nwd";
   slides: readonly ProjectGallerySlide[];
 };
 
