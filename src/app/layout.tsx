@@ -15,7 +15,7 @@ const sora = Sora({
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  ...pageMetadata("/", "ICE TECH DEVELOPMENT — AI & Web Development", "We build AI-powered web applications and connect them to the platforms your business already runs on."),
+  ...pageMetadata("/", "ICE TECH DEVELOPMENT — Web & AI Development", "We build web applications, connect them to the platforms your business already runs on, and add AI where it does real work."),
   icons: {
     icon: [
       { url: "/favicon.ico?v=ice-tech-1", sizes: "16x16 32x32 48x48", type: "image/x-icon" },

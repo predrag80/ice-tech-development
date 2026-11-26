@@ -30,6 +30,7 @@ type ProjectCaseStudyData = {
   deliverables: string[];
   technologies: [string, string][];
   results: ProjectResult[];
+  resultsLabel?: string;
   resultsSource?: { label: string; href: string };
   partner?: { label: string; name: string; href: string };
   preview: "smoki" | "hse" | "bitcoins" | "nwd";
@@ -111,7 +112,7 @@ export const projectCaseStudies = {
     name: "99Bitcoins",
     index: "03",
     category: "Content platform",
-    tagline: "A content-rich crypto platform enhanced with custom plugins and aggregated market data from external sources.",
+    tagline: "One of the top five crypto websites worldwide, with around 100,000 visits a day, extended with custom plugins and aggregated market data.",
     industry: "Crypto education and publishing",
     expertise: "Web development / Plugin engineering / Data aggregation",
     platform: "Global editorial website",
@@ -119,8 +120,8 @@ export const projectCaseStudies = {
     projectType: "Live project",
     website: "https://99bitcoins.com",
     overviewTitle: ["Crypto knowledge", "made accessible."],
-    overview: "99Bitcoins combines editorial content with custom crypto functionality, including a data aggregator that collects and normalizes information from external market sources.",
-    problem: "The platform needed reliable crypto data inside WordPress, while editors also required specialized tools that standard plugins could not provide.",
+    overview: "99Bitcoins is one of the top five crypto websites worldwide. It combines editorial content with custom crypto functionality, including a data aggregator that collects and normalizes information from external market sources.",
+    problem: "At around 100,000 visits a day, the platform needed reliable, fast crypto data inside WordPress, while editors also required specialized tools that standard plugins could not provide.",
     contribution: "Our work focused on custom WordPress plugins, including a crypto data aggregator that collects, normalizes and synchronizes information from external APIs, plus crypto-specific displays and editorial tools.",
     outcome: "The platform can bring external crypto data into its publishing workflows and present it through reusable frontend components, alongside its editorial content.",
     deliverables: ["Crypto data aggregator", "Custom WordPress plugins", "External API integrations", "Editorial tools"],
@@ -133,10 +134,11 @@ export const projectCaseStudies = {
       ["Caching", "Efficient and reliable data delivery"],
     ],
     results: [
+      { value: "Top 5", label: "Crypto websites worldwide" },
+      { value: "100K", label: "Visits a day, approx." },
       { value: null, label: "External data sources" }, // TODO
-      { value: null, label: "Crypto assets tracked" }, // TODO
-      { value: null, label: "Data refresh interval" }, // TODO
     ],
+    resultsLabel: "Platform scale",
     preview: "bitcoins",
     nextProject: "NWD Agency",
     nextHref: "/projects/nwd-agency",
@@ -281,14 +283,14 @@ const projectGalleries = {
   },
 } as const;
 
-function ProjectResults({ results, source }: { results: ProjectResult[]; source?: ProjectCaseStudyData["resultsSource"] }) {
+function ProjectResults({ results, label = "Results", source }: { results: ProjectResult[]; label?: string; source?: ProjectCaseStudyData["resultsSource"] }) {
   const visible = results.filter((result) => result.value !== null || showPlaceholders);
   // A single figure reads as an afterthought; the band appears once at least two are known.
   if (visible.length < 2) return null;
 
   return (
     <div className={styles.results} data-reveal>
-      <p className={styles.sectionLabel}>/ Results</p>
+      <p className={styles.sectionLabel}>/ {label}</p>
       <dl>
         {visible.map(({ value, label }) => (
           <div key={label}>
@@ -343,7 +345,7 @@ export default function ProjectCaseStudy({ project }: { project: ProjectCaseStud
           </div>
           <aside className={styles.scope} data-reveal><p>Our scope</p><ul>{project.deliverables.map((item) => <li key={item}>{item}</li>)}</ul></aside>
         </div>
-        <ProjectResults results={project.results} source={project.resultsSource} />
+        <ProjectResults results={project.results} label={project.resultsLabel} source={project.resultsSource} />
       </section>
 
       <section className={styles.technology}>
